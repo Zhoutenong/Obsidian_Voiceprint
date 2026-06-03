@@ -117,6 +117,10 @@
 - [x] `SystemAnalysisService` - 系统分析服务 ✅
 - [x] `SystemStatisticsService` - 系统统计服务 ✅
 - [ ] `ReportService` - 报告服务（注意：文件不存在，需创建或从 INDEX 删除引用）
+- [x] `AstPointDataService` - 点位数据服务 ✅
+- [x] `ChildTableNameManager` - 子表名管理器 ✅
+- [x] `LargeTextStorageManager` - 大文本存储管理器 ✅
+- [x] `TimeSeriesDbHelper` - 时序数据库助手 ✅
 
 ### 变电站管理
 - [x] `SubstationService` - 变电站服务 ✅
@@ -124,7 +128,8 @@
 - [x] `SubstationTypeService` - 变电站类型服务 ✅
 
 ### ISAPI 模块
-- [ ] `ISAPIService` - ISAPI 服务
+- [x] `ISAPIService` - ISAPI 服务 ✅
+- [x] `Iec61850ApiService` - IEC61850 API 服务 ✅
 - [x] `ISAPIResourceCleanupJob` - ISAPI 资源清理任务 ✅（已在 Hangfire/Camera/ 目录）
 
 ### 数据采集
