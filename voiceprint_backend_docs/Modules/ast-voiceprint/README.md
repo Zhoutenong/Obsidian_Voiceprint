@@ -46,12 +46,13 @@ ast-voiceprint/
 
 **职责：** 处理音频上传和算法识别结果回写
 
-**主要方法：**
-- `UploadAsync` - 接收树莓派上传的原始音频文件
-- `SubmitResultAsync` - 接收 Python 算法服务的识别结果
-- `GenerateReportFromAudioAsync` - 生成单音频分析报告
-- `SwitchAlgorithmAsync` - 切换算法（原始/增强）
-- `CancelManualCaptureAsync` - 取消手动采集任务
+**详细文档：** [[VoiceprintAudioAppService.md|VoiceprintAudioAppService - 音频处理服务]]
+
+**核心功能：**
+- 音频上传与批次管理
+- 算法识别结果处理
+- 单音频报告生成
+- 算法模式切换
 
 **API 基础路径：** `/api/app/voiceprint-audio/`
 
@@ -59,13 +60,14 @@ ast-voiceprint/
 
 **职责：** 提供前端门户功能的数据接口
 
-**主要方法：**
-- `GetOverviewAsync` - 首页总览统计
-- `GetDailyRecordsAsync` - 获取指定日期的巡视记录
-- `GetDeviceVoiceprintListAsync` - 设备声纹记录列表
-- `ProcessAlarmAsync` - 处理声纹告警
-- `CreateStandardAudioAsync` - 上传标准音频到标准库
-- `ExportReportAsync` - 导出综合报告
+**详细文档：** [[VoiceprintPortalAppService.md|VoiceprintPortalAppService - 前端门户服务]]
+
+**核心功能：**
+- 首页总览与统计
+- 设备资产管理
+- 标准音频库管理
+- 告警管理与处理
+- 综合报告导出
 
 **API 基础路径：** `/api/app/voiceprint/`
 
@@ -170,26 +172,48 @@ erDiagram
 
 ### 前端门户 API (`/api/app/voiceprint/`)
 
+**详细文档：** [[VoiceprintPortalAppService.md|VoiceprintPortalAppService - 前端门户服务]]
+
 | 端点 | 方法 | 功能 |
 |---|---|---|
 | `/dashboard/overview` | GET | 首页总览统计 |
 | `/dashboard/records` | GET | 获取指定日期的巡视记录 |
-| `/device-list` | GET | 设备声纹记录列表 |
-| `/alarm-list` | GET | 声纹告警列表 |
-| `/process-alarm` | POST | 处理声纹告警 |
-| `/standard-audio` | GET/POST | 标准音频库管理 |
-| `/export-report` | POST | 导出综合报告 |
-| `/collector-logs` | GET | 采集器通信日志 |
+| `/dashboard/records/{groupId}` | GET | 巡视记录详情 |
+| `/dashboard/system-status` | GET | 系统总览状态 |
+| `/dashboard/alarms` | GET | 首页告警信息 |
+| `/dashboard/generate-alarm-report` | POST | 生成告警报告 |
+| `/assets/tree` | GET | 设备台账树 |
+| `/assets/{monitoredObjectId}` | GET | 设备基础信息 |
+| `/assets/{monitoredObjectId}/trend` | GET | 设备运行趋势 |
+| `/assets/{monitoredObjectId}/anomaly-mix` | GET | 设备异常分布 |
+| `/assets/{monitoredObjectId}/logs` | GET | 设备巡检日志 |
+| `/assets/{monitoredObjectId}/processed-audios/download` | GET | 批量下载处理后音频 |
+| `/standard-audios` | GET/POST | 标准音频库管理 |
+| `/standard-audios/random` | GET | 随机获取标准音频 |
+| `/test-audios/import` | POST | 导入测试音频 |
+| `/alarms/monthly-stat` | GET | 近30天告警统计 |
+| `/alarms/device-options` | GET | 报警筛选设备下拉 |
+| `/alarms` | GET | 报警记录列表 |
+| `/alarms/{alarmId}` | PUT | 处理报警 |
+| `/reports/export` | POST | 导出综合报告 |
+| `/collector/logs` | GET | 采集器通信日志 |
 
 ### 内部处理 API (`/api/app/voiceprint-audio/`)
+
+**详细文档：** [[VoiceprintAudioAppService.md|VoiceprintAudioAppService - 音频处理服务]]
 
 | 端点 | 方法 | 功能 | 调用者 |
 |---|---|---|---|
 | `/upload` | POST | 上传原始音频 | 树莓派采集端 |
 | `/result` | POST | 提交算法识别结果 | Python 算法服务 |
-| `/generate-report` | POST | 生成单音频报告 | 内部服务 |
-| `/switch-algorithm` | POST | 切换算法模式 | 管理员 |
-| `/cancel-manual-capture` | POST | 取消手动采集 | 管理员 |
+| `/reports/generate-from-audio` | POST | 生成单音频报告 | 内部服务 |
+| `/cleanup/trigger` | POST | 手动触发清理任务 | 调试用 |
+| `/processed-audios/repair-by-group` | POST | 补齐缺失音频 | 维护工具 |
+| `/alarms/delete-by-time` | DELETE | 删除告警数据 | 维护工具 |
+| `/device-audios/fix-test-audio-anomaly-type` | POST | 修复测试音频类型 | 维护工具 |
+| `/alarms/simulate` | POST | 模拟告警 | 测试工具 |
+| `/algorithm/switch` | POST | 切换算法模式 | 管理员 |
+| `/capture/manual-cancel` | POST | 取消手动采集 | 管理员 |
 
 ## 时序流程
 
@@ -365,6 +389,16 @@ file: <binary WAV data>
 - `voiceprint-processed-cleanup` - 音频清理任务
 
 ## 相关文档
+
+### 模块服务文档
+
+**[[VoiceprintAudioAppService.md|VoiceprintAudioAppService - 音频处理服务]]** - 音频上传、算法回写、报告生成、算法切换的详细接口文档
+
+**[[VoiceprintPortalAppService.md|VoiceprintPortalAppService - 前端门户服务]]** - 门户统计、设备管理、告警处理、报告导出的详细接口文档
+
+**[[../../Hangfire/Voiceprint/VoiceprintCaptureRuntimeStateService.md|VoiceprintCaptureRuntimeStateService - 运行时状态管理]]** - 手动采集批次状态管理和超时恢复机制
+
+**[[../../Hangfire/Voiceprint/VoiceprintCaptureJob.md|VoiceprintCaptureJob - 采集任务调度]]** - Hangfire 定时采集任务和 MQTT 命令下发
 
 ### 系统架构与设计
 

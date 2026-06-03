@@ -24,10 +24,10 @@
 
 ### 📋 学习路线
 
-- [[整体架构设计]] — 整体架构设计
-- [[模块依赖关系]] — 模块依赖关系
+- [[Architecture/整体架构设计]] — 整体架构设计
+- [[Architecture/模块依赖关系]] — 模块依赖关系
 - [[Modules/ast-intellisub/变电站监视范围概览]] — 模块划分、数据驱动方式与监视内容总览
-- [[数据库设计]] — 数据库结构说明
+- [[Architecture/数据库设计]] — 数据库结构说明
 
 ### 🔧 核心模块
 
@@ -48,189 +48,185 @@
 
 ```
 Classes/            核心实体文档
-  ├─ Device.md      设备实体
-  ├─ Alarm.md       告警实体
-  ├─ Voiceprint.md  声纹实体
-  └─ PointData.md   点位数据实体
+  ├─ Device.md      ✅ 设备实体
+  ├─ Alarm.md       ✅ 告警实体
+  ├─ Voiceprint.md  ✅ 声纹实体
+  └─ PointData.md   ✅ 点位数据实体
 Modules/            模块文档（按业务模块组织）
   ├─ rbac/          认证授权模块
-  │   ├─ 认证系统.md
-  │   ├─ 用户管理API.md
-  │   ├─ 权限定义服务.md
-  │   └─ RbacOverview.md
+  │   ├─ 认证系统.md        ✅
+  │   ├─ 用户管理API.md     ✅
+  │   ├─ 权限定义服务.md    ✅
+  │   └─ RbacOverview.md    ✅
   ├─ ast-intellisub/ 变电站监控模块
-  │   ├─ 变电站监视范围概览.md  模块/数据流/监视内容总览
-  │   ├─ 设备管理服务.md
-  │   ├─ 设备告警流程.md
+  │   ├─ 变电站监视范围概览.md  ✅ 模块/数据流/监视内容总览
+  │   ├─ 设备管理服务.md         ✅
+  │   ├─ 设备告警流程.md         ✅
   │   ├─ Patrol/      巡检系统
-  │   │   ├─ PatrolTaskService.md
-  │   │   ├─ PatrolExecutionService.md
-  │   │   └─ PatrolRecordService.md
+  │   │   ├─ PatrolTaskService.md           ✅
+  │   │   ├─ PatrolExecutionService.md      ✅
+  │   │   ├─ PatrolRecordService.md         ✅
+  │   │   └─ PatrolSystemRecoveryService.md ⬜ 规划中
   │   ├─ Monitoring/   监测点位
-  │   │   ├─ MonitoredPointService.md
-  │   │   ├─ MonitoredObjectService.md
-  │   │   ├─ MonitoredItemService.md
-  │   │   ├─ MonitoredObjectAttrService.md
-  │   │   ├─ MonitoredObjectTypeService.md
-  │   │   ├─ RealtimeMonitoringPointService.md
-  │   │   ├─ SensorService.md
-  │   │   └─ MonitoredPointAlarmCategoryRelService.md
+  │   │   ├─ MonitoredPointService.md        ✅
+  │   │   ├─ MonitoredObjectService.md      ✅
+  │   │   ├─ MonitoredItemService.md        ✅
+  │   │   ├─ MonitoredObjectAttrService.md   ✅
+  │   │   ├─ MonitoredObjectTypeService.md   ✅
+  │   │   ├─ RealtimeMonitoringPointService.md ✅
+  │   │   ├─ SensorService.md               ✅
+  │   │   └─ MonitoredPointAlarmCategoryRelService.md ✅
   │   ├─ Gateway/      网关/MQTT
-  │   │   ├─ GatewayService.md
-  │   │   ├─ MqttService.md
-  │   │   └─ StreamingGatewayService.md
+  │   │   ├─ GatewayService.md              ✅
+  │   │   ├─ MqttService.md                 ✅
+  │   │   ├─ StreamingGatewayService.md     ✅
+  │   │   └─ MqttMessageBackgroundService.md ✅
   │   ├─ DataBinding/  数据绑定
-  │   │   ├─ DataBindingItemService.md
-  │   │   ├─ DataBindingTypeService.md
-  │   │   ├─ DisplayComponentService.md
-  │   │   ├─ DataStrategyService.md
-  │   │   ├─ StrategyStateService.md
-  │   │   ├─ BindingItemStrategyRelService.md
-  │   │   ├─ PointValueProcessingService.md
-  │   │   ├─ PointValueCacheService.md
-  │   │   └─ PointBindingRelService.md
+  │   │   ├─ DataBindingItemService.md     ✅
+  │   │   ├─ DataBindingTypeService.md      ✅
+  │   │   ├─ DisplayComponentService.md     ✅
+  │   │   ├─ DataStrategyService.md         ✅
+  │   │   ├─ StrategyStateService.md        ✅
+  │   │   ├─ BindingItemStrategyRelService.md ✅
+  │   │   ├─ PointValueProcessingService.md ✅
+  │   │   ├─ PointValueCacheService.md      ✅
+  │   │   └─ PointBindingRelService.md      ✅
   │   ├─ Alarm/        告警系统
-  │   │   ├─ AlarmNotificationHub.md
-  │   │   ├─ AlarmNotificationService.md
-  │   │   ├─ AlarmCategoryService.md
-  │   │   ├─ AlarmRecordService.md
-  │   │   ├─ AlarmProcessingService.md
-  │   │   ├─ CollectorService.md
-  │   │   └─ AlarmStrategyOverview.md
+  │   │   ├─ AlarmNotificationHub.md       ✅
+  │   │   ├─ AlarmNotificationService.md   ✅
+  │   │   ├─ AlarmCategoryService.md       ✅
+  │   │   ├─ AlarmRecordService.md          ✅
+  │   │   ├─ AlarmProcessingService.md     ✅
+  │   │   ├─ CollectorService.md           ✅
+  │   │   └─ AlarmStrategyOverview.md      ✅
   │   ├─ Camera/      摄像机/流媒体
-  │   │   ├─ CameraService.md
-  │   │   ├─ MediaService.md
-  │   │   ├─ StreamingApiService.md
-  │   │   ├─ PresetService.md
-  │   │   ├─ NvrService.md
-  │   │   └─ StreamingTransferService.md
+  │   │   ├─ CameraService.md               ✅
+  │   │   ├─ MediaService.md                ✅
+  │   │   ├─ StreamingApiService.md         ✅
+  │   │   ├─ PresetService.md               ✅
+  │   │   ├─ NvrService.md                  ⬜ 规划中
+  │   │   └─ CameraResourceManager.md       ✅
   │   ├─ AI/          AI 识别
-  │   │   ├─ AIRecognitionService.md
-  │   │   └─ AlgorithmService.md
-  │   ├─ Camera/      摄像机/流媒体
-  │   │   ├─ CameraService.md
-  │   │   ├─ MediaService.md
-  │   │   ├─ StreamingApiService.md
-  │   │   ├─ PresetService.md
-  │   │   ├─ NvrService.md
-  │   │   ├── StreamingTransferService.md
-  │   │   └─ CameraResourceManager.md
+  │   │   ├─ AIRecognitionService.md        ✅
+  │   │   ├─ AlgorithmService.md            ✅
+  │   │   └─ RecognitionApiService.md       ✅
   │   ├─ Substation/   变电站管理
-  │   │   ├─ SubstationService.md
-  │   │   ├─ SubstationUserService.md
-  │   │   └─ SubstationTypeService.md
+  │   │   ├─ SubstationService.md           ✅
+  │   │   ├─ SubstationUserService.md       ✅
+  │   │   └─ SubstationTypeService.md       ✅
   │   ├─ Streaming/   流媒体
-  │   │   ├─ StreamingGatewayService.md
-  │   │   ├─ NvrService.md
-  │   │   └─ StreamingTransferService.md
+  │   │   ├─ StreamingGatewayService.md     ✅
+  │   │   ├─ NvrService.md                  ✅
+  │   │   └─ StreamingTransferService.md    ✅
   │   ├─ DataCollection/ 数据采集
-  │   │   └─ DataCollectionService.md
+  │   │   └─ DataCollectionService.md       ✅
   │   ├─ Report/      报告服务
-  │   │   └─ ReportService.md
+  │   │   └─ ReportService.md               ⬜ 规划中
   │   └─ Analysis/     系统分析
-  │       ├─ SystemAnalysisService.md
-  │       └─ SystemStatisticsService.md
+  │       ├─ SystemAnalysisService.md      ✅
+  │       └─ SystemStatisticsService.md     ✅
   ├─ ast-intellisubdata/ 传感器数据模块
-  │   ├─ README.md
-  │   ├─ AstPointDataService.md
-  │   ├─ ChildTableNameManager.md
-  │   ├─ TimeSeriesDbHelper.md
-  │   ├─ LargeTextStorageManager.md
-  │   ├─ PointData.md
-  │   ├─ 传感器数据管理服务.md
-  │   ├─ 数据清理任务.md
-  │   ├─ TDengine集成.md
-  │   └─ 数据上报流程.md
+  │   ├─ README.md                        ✅
+  │   ├─ AstPointDataService.md           ✅
+  │   ├─ ChildTableNameManager.md         ✅
+  │   ├─ TimeSeriesDbHelper.md            ✅
+  │   ├─ LargeTextStorageManager.md       ✅
+  │   ├─ PointData.md                     ✅
+  │   ├─ 传感器数据管理服务.md            ✅
+  │   ├─ 数据清理任务.md                  ✅
+  │   ├─ TDengine集成.md                  ✅
+  │   └─ 数据上报流程.md                  ✅
   ├─ ast-voiceprint/ 声纹分析模块
-  │   ├─ README.md
-  │   ├─ VoiceprintCaptureRuntimeStateService.md
-  │   ├─ 声纹采集服务.md
-  │   └─ 声纹分析流程.md
+  │   ├─ README.md                        ✅
+  │   ├─ VoiceprintCaptureRuntimeStateService.md ✅
+  │   ├─ 声纹采集服务.md                  ✅
+  │   └─ 声纹分析流程.md                  ✅
   ├─ isapi/         工业协议集成模块
-  │   ├─ ISAPIService.md
-  │   ├─ Iec61850ApiService.md
-  │   ├─ IEC61850数据上报服务.md
-  │   └─ 数据上报流程.md
+  │   ├─ ISAPIService.md                  ✅
+  │   ├─ Iec61850ApiService.md            ✅
+  │   ├─ IEC61850数据上报服务.md          ✅
+  │   └─ 数据上报流程.md                  ✅
   ├─ audit-logging/  审计日志模块
-  │   └─ AuditLoggingOverview.md
+  │   └─ AuditLoggingOverview.md          ✅
   ├─ tenant-management/ 多租户模块
-  │   └─ TenantManagementOverview.md
+  │   └─ TenantManagementOverview.md      ✅
   ├─ setting-management/ 系统设置模块
-  │   └─ SettingManagementOverview.md
+  │   └─ SettingManagementOverview.md     ✅
   └─ System/        系统基础服务
-      ├─ EnumService.md
-      ├─ FileService.md
-      └─ DataIntegrityCheckService.md
+      ├─ EnumService.md                   ✅
+      ├─ FileService.md                   ✅
+      ├─ DataIntegrityCheckService.md     ✅
+      └─ ApplicationStartupService.md     ✅
 API/                API 接口文档
   ├─ Account/        账户 API
-  │   └─ AccountAPI.md
+  │   └─ AccountAPI.md                   ✅
   ├─ Alarm/          告警 API
-  │   └─ AlarmAPI.md
+  │   └─ AlarmAPI.md                     ✅
   ├─ Dashboard/      仪表板 API
-  │   └─ DashboardAPI.md
+  │   └─ DashboardAPI.md                 ✅
   ├─ Assets/         设备台账 API
-  │   └─ AssetsAPI.md
+  │   └─ AssetsAPI.md                    ✅
   ├─ Voiceprint/     声纹 API
-  │   └─ VoiceprintAPI.md
+  │   └─ VoiceprintAPI.md                ✅
   ├─ VoiceprintAudio/ 声纹音频内部 API
-  │   ├─ VoiceprintAudioInternalAPI.md
-  │   └─ VoiceprintAudioUploadAPI.md
+  │   ├─ VoiceprintAudioInternalAPI.md   ✅
+  │   └─ VoiceprintAudioUploadAPI.md     ✅
   ├─ Report/         报告 API
-  │   └─ ReportAPI.md
+  │   └─ ReportAPI.md                    ✅
   ├─ PointData/      传感器数据 API
-  │   └─ PointDataAPI.md
+  │   └─ PointDataAPI.md                 ✅
   └─ IntelliSub/     智能变电站 API
-      └─ IntelliSubAPI.md
+      └─ IntelliSubAPI.md                ✅
 Pipelines/          数据流程文档
   ├─ Audio/         音频处理流程
-  │   ├─ 音频处理管道.md
-  │   └─ 音频采集流程.md
+  │   ├─ 音频处理管道.md                  ✅
+  │   └─ 音频采集流程.md                  ✅
   ├─ DataReport/    数据上报流程
-  │   └─ IEC61850上报管道.md
+  │   └─ IEC61850上报管道.md              ✅
   └─ Events/        事件驱动
-      └─ EventDrivenPipeline.md
+      └─ EventDrivenPipeline.md          ✅
 Hangfire/           后台任务文档
   ├─ Voiceprint/    声纹相关 Jobs
-  │   └─ VoiceprintCaptureJob.md
+  │   └─ VoiceprintCaptureJob.md          ✅
   ├─ System/        系统相关 Jobs
-  │   ├─ PatrolJobManager.md
-  │   ├─ VoiceprintProcessedCleanupJob.md
-  │   └─ PatrolSystemCleanupJob.md
+  │   ├─ PatrolJobManager.md             ✅
+  │   ├─ VoiceprintProcessedCleanupJob.md ✅
+  │   └─ PatrolSystemCleanupJob.md       ✅
+  │   └─ VisualGatewayHealthCheckJob.md  ✅
   ├─ Data/          数据相关 Jobs
-  │   ├─ PointDataCleanupJob.md
-  │   ├─ PointValueCacheCleanupJob.md
-  │   ├─ InfraredTemperatureCollectionJob.md
-  │   └─ EnvironmentDetectionCollectionJob.md
+  │   ├─ PointDataCleanupJob.md          ✅
+  │   ├─ PointValueCacheCleanupJob.md    ✅
+  │   ├─ InfraredTemperatureCollectionJob.md ✅
+  │   └─ EnvironmentDetectionCollectionJob.md ✅
   ├─ Gateway/       网关相关 Jobs
-  │   ├─ GatewaySyncJob.md
-  │   └─ VisualGatewayHealthCheckJob.md
+  │   └─ GatewaySyncJob.md               ✅
   └─ Camera/        摄像机相关 Jobs
-      ├─ CameraResourceCleanupJob.md
-      └─ ISAPIResourceCleanupJob.md
+      ├─ CameraResourceCleanupJob.md     ✅
+      └─ ISAPIResourceCleanupJob.md     ✅
 Concepts/           架构概念与设计模式
-  ├─ ABP仓储模式.md
-  └─ DDD分层架构.md
+  ├─ ABP仓储模式.md                       ✅
+  └─ DDD分层架构.md                       ✅
 Architecture/       架构文档
-  ├─ 整体架构设计.md
-  ├─ 模块依赖关系.md
-  └─ 数据库设计.md
+  ├─ 整体架构设计.md                      ✅
+  ├─ 模块依赖关系.md                      ✅
+  └─ 数据库设计.md                        ✅
 Diagrams/           架构图和流程图
-  ├─ 01-用户登录认证流程.md
-  ├─ 02-告警管理流程.md
-  ├─ 03-仪表板与巡视流程.md
-  ├─ 04-设备台账查询流程.md
-  ├─ 05-声纹分析流程.md
-  └─ 图表索引.md
+  ├─ 01-用户登录认证流程.md              ✅
+  ├─ 02-告警管理流程.md                  ✅
+  ├─ 03-仪表板与巡视流程.md              ✅
+  ├─ 04-设备台账查询流程.md              ✅
+  ├─ 05-声纹分析流程.md                  ✅
+  └─ 图表索引.md                          ✅
 Issues/             Bug 案例与调试
-  ├─ ARM32堆栈溢出问题.md
-  ├─ 连续告警误报问题.md
-  ├─ TDengine连接超时问题.md
-  └─ 调试指南.md
+  ├─ ARM32堆栈溢出问题.md                ✅
+  ├─ 连续告警误报问题.md                  ✅
+  ├─ TDengine连接超时问题.md              ✅
+  └─ 调试指南.md                          ✅
 Configuration/      配置文档
-  ├─ AppSettingsIndex.md
-  └─ 配置快速参考.md
+  ├─ AppSettingsIndex.md                 ✅
+  └─ 配置快速参考.md                      ⬜ 规划中
 Resources/          外部资源索引
-  └─ ExternalDocsIndex.md
+  └─ ExternalDocsIndex.md                ✅
     链接到外部实现方案：
     - [[../../../voiceprint/00-系统架构与功能实现.md|系统架构实现]]
     - [[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹服务]]
@@ -238,15 +234,15 @@ Resources/          外部资源索引
     - [[../../../data-flow-diagrams/|前端 API 时序图（6 个 HTML）]]
     - [[../../../frontend-api-interfaces.md|前端 23 个接口]]
 Templates/          笔记模板
-  ├─ 组件笔记模板.md
-  ├─ 流程文档模板.md
-  ├─ 概念文档模板.md
-  ├─ API文档模板.md
-  └─ Hangfire任务模板.md
-DocumentationPlan.md  文档补充计划
-快速导航.md          快速导航
-README.md           项目说明
-INDEX.md            本文件（知识图谱索引）
+  ├─ 组件笔记模板.md                     ✅
+  ├─ 流程文档模板.md                     ✅
+  ├─ 概念文档模板.md                     ✅
+  ├─ API文档模板.md                      ✅
+  └─ Hangfire任务模板.md                 ✅
+DocumentationPlan.md  文档补充计划         ✅
+快速导航.md          快速导航             ✅
+README.md           项目说明             ✅
+INDEX.md            本文件（知识图谱索引）✅
 ```
 
 ---
@@ -254,69 +250,70 @@ INDEX.md            本文件（知识图谱索引）
 ## API 文档索引
 
 ### 账户与认证
-[[API/Account/AccountAPI]] — 用户登录、登出、密码管理
+[[API/Account/AccountAPI]] — 用户登录、登出、密码管理 ✅
 
 ### 告警管理
-[[API/Alarm/AlarmAPI]] — 告警列表、月度统计、告警处理
+[[API/Alarm/AlarmAPI]] — 告警列表、月度统计、告警处理 ✅
 
 ### 仪表板
-[[API/Dashboard/DashboardAPI]] — 巡视统计、系统状态、首页告警
+[[API/Dashboard/DashboardAPI]] — 巡视统计、系统状态、首页告警 ✅
 
 ### 设备台账
-[[API/Assets/AssetsAPI]] — 设备台账树、设备信息、运行趋势
+[[API/Assets/AssetsAPI]] — 设备台账树、设备信息、运行趋势 ✅
 
 ### 声纹分析
-[[API/Voiceprint/VoiceprintAPI]] — 标准音频库、测试音频、报告生成
-[[API/VoiceprintAudio/VoiceprintAudioInternalAPI]] — 音频记录、处理、下载
+[[API/Voiceprint/VoiceprintAPI]] — 标准音频库、测试音频、报告生成 ✅
+[[API/VoiceprintAudio/VoiceprintAudioInternalAPI]] — 音频记录、处理、下载 ✅
+[[API/VoiceprintAudio/VoiceprintAudioUploadAPI]] — 音频上传接口 ✅
 
 ### 传感器数据
-[[API/PointData/PointDataAPI]] — 最新数据、历史数据、批量查询
+[[API/PointData/PointDataAPI]] — 最新数据、历史数据、批量查询 ✅
 
 ### 报告管理
-[[API/Report/ReportAPI]] — 报告导出、模板管理
+[[API/Report/ReportAPI]] — 报告导出、模板管理 ✅
 
 ### 智能变电站
-[[API/IntelliSub/IntelliSubAPI]] — 变电站综合接口
+[[API/IntelliSub/IntelliSubAPI]] — 变电站综合接口 ✅
 
 ---
 
 ## 后台任务索引 (Hangfire)
 
 ### 系统任务
-[[Hangfire/System/PatrolJobManager]] — 巡检任务调度
-[[Hangfire/System/VoiceprintProcessedCleanupJob]] — 音频清理
-[[Hangfire/System/PatrolSystemCleanupJob]] — 巡检清理
-[[Hangfire/System/VisualGatewayHealthCheckJob]] — 网关健康检查
+[[Hangfire/System/PatrolJobManager]] — 巡检任务调度 ✅
+[[Hangfire/System/VoiceprintProcessedCleanupJob]] — 音频清理 ✅
+[[Hangfire/System/PatrolSystemCleanupJob]] — 巡检清理 ✅
+[[Hangfire/System/VisualGatewayHealthCheckJob]] — 网关健康检查 ✅
 
 ### 数据任务
-[[Hangfire/Data/PointDataCleanupJob]] — 点位数据清理
-[[Hangfire/Data/PointValueCacheCleanupJob]] — 缓存清理
-[[Hangfire/Data/InfraredTemperatureCollectionJob]] — 红外温度采集
-[[Hangfire/Data/EnvironmentDetectionCollectionJob]] — 环境监测采集
+[[Hangfire/Data/PointDataCleanupJob]] — 点位数据清理 ✅
+[[Hangfire/Data/PointValueCacheCleanupJob]] — 缓存清理 ✅
+[[Hangfire/Data/InfraredTemperatureCollectionJob]] — 红外温度采集 ✅
+[[Hangfire/Data/EnvironmentDetectionCollectionJob]] — 环境监测采集 ✅
 
 ### 网关任务
-[[Hangfire/Gateway/GatewaySyncJob]] — 网关同步
+[[Hangfire/Gateway/GatewaySyncJob]] — 网关同步 ✅
 
 ### 摄像机任务
-[[Hangfire/Camera/CameraResourceCleanupJob]] — 摄像机资源清理
-[[Hangfire/Camera/ISAPIResourceCleanupJob]] — ISAPI 资源清理
+[[Hangfire/Camera/CameraResourceCleanupJob]] — 摄像机资源清理 ✅
+[[Hangfire/Camera/ISAPIResourceCleanupJob]] — ISAPI 资源清理 ✅
 
 ### 声纹任务
-[[Hangfire/Voiceprint/VoiceprintCaptureJob]] — 声纹采集
+[[Hangfire/Voiceprint/VoiceprintCaptureJob]] — 声纹采集 ✅
 
 ---
 
 ## 数据流程管道
 
 ### 音频处理
-[[Pipelines/Audio/音频处理管道]] — 音频处理完整流程
-[[Pipelines/Audio/音频采集流程]] — 音频采集详细步骤
+[[Pipelines/Audio/音频处理管道]] — 音频处理完整流程 ✅
+[[Pipelines/Audio/音频采集流程]] — 音频采集详细步骤 ✅
 
 ### 数据上报
-[[Pipelines/DataReport/IEC61850上报管道]] — IEC61850 数据上报流程
+[[Pipelines/DataReport/IEC61850上报管道]] — IEC61850 数据上报流程 ✅
 
 ### 事件驱动
-[[Pipelines/Events/EventDrivenPipeline]] — 事件驱动架构管道
+[[Pipelines/Events/EventDrivenPipeline]] — 事件驱动架构管道 ✅
 
 ---
 
@@ -325,83 +322,80 @@ INDEX.md            本文件（知识图谱索引）
 ### ✅ RBAC 模块（认证授权）
 
 #### 概览
-[[Modules/rbac/RbacOverview]] — RBAC 模块概述
+[[Modules/rbac/RbacOverview]] — RBAC 模块概述 ✅
 
 #### 核心
-[[Modules/rbac/认证系统]] · [[Modules/rbac/权限定义服务]] · [[Modules/rbac/用户管理API]]
-
-#### 用户管理
-[[用户管理]] · [[角色管理]] · [[权限管理]]
+[[Modules/rbac/认证系统]] · [[Modules/rbac/权限定义服务]] · [[Modules/rbac/用户管理API]] ✅
 
 ---
 
 ### ✅ ast-intellisub 模块（变电站监控）
 
 #### 概览
-[[Modules/ast-intellisub/变电站监视范围概览]] — 主要模块、数据驱动方式、监视对象与物理量
+[[Modules/ast-intellisub/变电站监视范围概览]] — 主要模块、数据驱动方式、监视对象与物理量 ✅
 
 #### 设备管理
-[[Modules/ast-intellisub/设备管理服务]] · [[Classes/Device]]
+[[Modules/ast-intellisub/设备管理服务]] · [[Classes/Device]] ✅
 
 #### 巡检系统
-[[Modules/ast-intellisub/Patrol/PatrolTaskService]] · [[Modules/ast-intellisub/Patrol/PatrolExecutionService]] · [[Modules/ast-intellisub/Patrol/PatrolRecordService]]
+[[Modules/ast-intellisub/Patrol/PatrolTaskService]] · [[Modules/ast-intellisub/Patrol/PatrolExecutionService]] · [[Modules/ast-intellisub/Patrol/PatrolRecordService]] · [[Modules/ast-intellisub/Patrol/PatrolSystemRecoveryService]] ⬜
 
 #### 监测点位
-[[Modules/ast-intellisub/Monitoring/MonitoredPointService]] · [[Modules/ast-intellisub/Monitoring/MonitoredObjectService]] · [[Modules/ast-intellisub/Monitoring/SensorService]]
+[[Modules/ast-intellisub/Monitoring/MonitoredPointService]] · [[Modules/ast-intellisub/Monitoring/MonitoredObjectService]] · [[Modules/ast-intellisub/Monitoring/SensorService]] ✅
 
 #### 网关/MQTT
-[[Modules/ast-intellisub/Gateway/GatewayService]] · [[Modules/ast-intellisub/Gateway/MqttService]]
+[[Modules/ast-intellisub/Gateway/GatewayService]] · [[Modules/ast-intellisub/Gateway/MqttService]] · [[Modules/ast-intellisub/Gateway/StreamingGatewayService]] ✅
 
 #### 数据绑定
-[[Modules/ast-intellisub/DataBinding/DataBindingItemService]] · [[Modules/ast-intellisub/DataBinding/DataStrategyService]]
+[[Modules/ast-intellisub/DataBinding/DataBindingItemService]] · [[Modules/ast-intellisub/DataBinding/DataStrategyService]] ✅
 
 #### 告警系统
-[[Modules/ast-intellisub/设备告警流程]] · [[Modules/ast-intellisub/Alarm/AlarmNotificationHub]] · [[Modules/ast-intellisub/Alarm/AlarmNotificationService]] · [[Modules/ast-intellisub/Alarm/AlarmCategoryService]] · [[Classes/Alarm]]
+[[Modules/ast-intellisub/设备告警流程]] · [[Modules/ast-intellisub/Alarm/AlarmNotificationHub]] · [[Modules/ast-intellisub/Alarm/AlarmNotificationService]] · [[Modules/ast-intellisub/Alarm/AlarmCategoryService]] · [[Classes/Alarm]] ✅
 
 #### 摄像机集成
-[[Modules/ast-intellisub/Camera/CameraService]] · [[Modules/ast-intellisub/Camera/MediaService]] · [[Modules/ast-intellisub/Camera/StreamingApiService]] · [[Modules/ast-intellisub/Camera/PresetService]]
+[[Modules/ast-intellisub/Camera/CameraService]] · [[Modules/ast-intellisub/Camera/MediaService]] · [[Modules/ast-intellisub/Camera/StreamingApiService]] · [[Modules/ast-intellisub/Camera/PresetService]] · [[Modules/ast-intellisub/Camera/CameraResourceManager]] ✅
 
 #### AI 识别
-[[Modules/ast-intellisub/AI/AIRecognitionService]]
+[[Modules/ast-intellisub/AI/AIRecognitionService]] · [[Modules/ast-intellisub/AI/AlgorithmService]] · [[Modules/ast-intellisub/AI/RecognitionApiService]] ✅
 
 #### 系统分析
-[[Modules/ast-intellisub/Analysis/SystemAnalysisService]] · [[Modules/ast-intellisub/Analysis/SystemStatisticsService]]
+[[Modules/ast-intellisub/Analysis/SystemAnalysisService]] · [[Modules/ast-intellisub/Analysis/SystemStatisticsService]] ✅
+
+#### 变电站管理
+[[Modules/ast-intellisub/Substation/SubstationService]] · [[Modules/ast-intellisub/Substation/SubstationUserService]] · [[Modules/ast-intellisub/Substation/SubstationTypeService]] ✅
 
 ---
 
 ### ✅ ast-intellisubdata 模块（时序数据）
 
 #### 概览
-[[Modules/ast-intellisubdata/传感器数据管理服务]] · [[Classes/PointData]]
+[[Modules/ast-intellisubdata/传感器数据管理服务]] · [[Classes/PointData]] ✅
 
 #### 数据采集
-[[Modules/ast-intellisubdata/数据上报流程]]
+[[Modules/ast-intellisubdata/数据上报流程]] ✅
 
 #### 数据存储
-[[Modules/ast-intellisubdata/TDengine集成]]
+[[Modules/ast-intellisubdata/TDengine集成]] ✅
 
 #### 数据清理
-[[Modules/ast-intellisubdata/数据清理任务]]
+[[Modules/ast-intellisubdata/数据清理任务]] ✅
 
 ---
 
 ### ✅ ast-voiceprint 模块（声纹分析）
 
 #### 音频处理
-[[Modules/ast-voiceprint/声纹采集服务]] · [[Modules/ast-voiceprint/声纹分析流程]] · [[Classes/Voiceprint]]
+[[Modules/ast-voiceprint/声纹采集服务]] · [[Modules/ast-voiceprint/声纹分析流程]] · [[Classes/Voiceprint]] · [[Modules/ast-voiceprint/VoiceprintCaptureRuntimeStateService]] ✅
 
 #### 流程文档
-[[Pipelines/Audio/音频处理管道]] · [[Pipelines/Audio/音频采集流程]]
+[[Pipelines/Audio/音频处理管道]] · [[Pipelines/Audio/音频采集流程]] ✅
 
 ---
 
 ### ✅ isapi 模块（工业协议）
 
 #### IEC61850
-[[Modules/isapi/IEC61850数据上报服务]] · [[Modules/isapi/数据上报流程]] · [[Pipelines/DataReport/IEC61850上报管道]]
-
-#### IEC104
-[[IEC104协议]] · [[数据解析]]
+[[Modules/isapi/IEC61850数据上报服务]] · [[Modules/isapi/数据上报流程]] · [[Pipelines/DataReport/IEC61850上报管道]] · [[Modules/isapi/Iec61850ApiService]] ✅
 
 ---
 
@@ -454,57 +448,26 @@ SORT file.name ASC
 ## 基础设施模块
 
 ### 审计日志
-[[Modules/audit-logging/AuditLoggingOverview]]
+[[Modules/audit-logging/AuditLoggingOverview]] ✅
 
 ### 多租户
-[[Modules/tenant-management/TenantManagementOverview]]
+[[Modules/tenant-management/TenantManagementOverview]] ✅
 
 ### 系统设置
-[[Modules/setting-management/SettingManagementOverview]]
+[[Modules/setting-management/SettingManagementOverview]] ✅
+
+### 系统服务
+[[Modules/System/EnumService]] · [[Modules/System/FileService]] · [[Modules/System/DataIntegrityCheckService]] · [[Modules/System/ApplicationStartupService]] ✅
 
 ---
 
 ## 架构概念
 
 ### 架构文档
-[[Architecture/整体架构设计]] · [[Architecture/模块依赖关系]] · [[Architecture/数据库设计]]
+[[Architecture/整体架构设计]] · [[Architecture/模块依赖关系]] · [[Architecture/数据库设计]] ✅
 
 ### 设计模式
-[[Concepts/ABP仓储模式]] · [[Concepts/DDD分层架构]]
-
----
-
-## 后台任务 (Hangfire)
-
-### 定时任务
-| 任务 | Cron表达式 | 说明 | 状态 |
-|------|-----------|------|------|
-| VoiceprintCaptureJob | `0 */10 * * * *` | 音频采集 | 🟢 |
-| VoiceprintProcessedCleanupJob | 手动 | 清理已处理音频 | 🟢 |
-| PointDataCleanupJob | 可配置 | 数据清理 | 🟢 |
-| PatrolJobManager | 可配置 | 巡检任务调度 | 🟢 |
-
-```dataview
-LIST
-FROM #hangfire
-SORT file.name ASC
-```
-
----
-
-## 架构概念
-
-### DDD 分层
-[[应用层]] · [[领域层]] · [[基础设施层]] · [[表示层]]
-
-### ABP 特性
-[[模块系统]] · [[依赖注入]] · [[仓储模式]] · [[工作单元]]
-
-### 数据库
-[[CodeFirst迁移]] · [[多数据库支持]] · [[SqlSugar配置]]
-
-### 认证授权
-[[JWT认证]] · [[OAuth集成]] · [[权限定义]]
+[[Concepts/ABP仓储模式]] · [[Concepts/DDD分层架构]] ✅
 
 ---
 
@@ -514,36 +477,17 @@ SORT file.name ASC
 - **LowResource** (默认) — SQLite + Memory 存储，ARM32/边缘设备优化
 - **HighPerformance** — 完整数据库 + Redis/TDengine，数据中心部署
 
-### 配置文件结构
-```json
-{
-  "DbConnOptions": {
-    "DeploymentMode": "LowResource",
-    "Url": "Data Source=db/ast_intellisub.db",
-    "DbType": "Sqlite"
-  },
-  "Hangfire": {
-    "StorageMode": "Memory"
-  },
-  "VoiceprintCaptureJob": {
-    "Enabled": true,
-    "CronExpression": "0 */10 * * * *"
-  },
-  "Iec61850": {
-    "EnableDataReport": false,
-    "ModelFiles": [...]
-  }
-}
-```
+### 配置文件
+[[Configuration/AppSettingsIndex]] ✅
 
 ---
 
 ## 学习资源
 
-- [[DocumentationPlan]] — 文档补充计划
-- [[项目CLAUDE.md]] — 项目开发指南
-- [[快速导航]] — 快速导航索引
-- [[Diagrams/图表索引]] — 流程图索引
+- [[DocumentationPlan]] — 文档补充计划 ✅
+- [[待补文档清单]] — 待补文档清单与建议目录结构 ✅
+- [[快速导航]] — 快速导航索引 ✅
+- [[Diagrams/图表索引]] — 流程图索引 ✅
 
 ---
 
