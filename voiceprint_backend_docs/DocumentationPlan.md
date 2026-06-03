@@ -7,148 +7,115 @@
 ### ast-intellisub 核心服务
 
 #### 巡检系统
-- [ ] `PatrolTaskService` - 巡检任务管理服务
-- [ ] `PatrolExecutionService` - 巡检执行服务
-- [ ] `PatrolRecordService` - 巡检记录服务
-- [ ] `PatrolJobManager` - 巡检任务调度器（Hangfire Job）
-- [ ] `PatrolSystemCleanupJob` - 巡检系统清理任务
+- [x] `PatrolTaskService` - 巡检任务管理服务 ✅
+- [x] `PatrolExecutionService` - 巡检执行服务 ✅
+- [x] `PatrolRecordService` - 巡检记录服务 ✅
+- [x] `PatrolJobManager` - 巡检任务调度器（Hangfire Job） ✅
+- [x] `PatrolSystemCleanupJob` - 巡检系统清理任务 ✅
 - [ ] `PatrolSystemRecoveryService` - 巡检系统恢复服务
 
 #### 监测点位/对象
-- [ ] `MonitoredPointService` - 监测点位服务
-- [ ] `MonitoredObjectService` - 监测对象服务
-- [ ] `RealtimeMonitoringPointService` - 实时监测点位服务
-- [ ] `SensorService` - 传感器服务
-- [ ] `MonitoredPointAlarmCategoryRelService` - 点位告警分类关联服务
+- [x] `MonitoredPointService` - 监测点位服务 ✅
+- [x] `MonitoredObjectService` - 监测对象服务 ✅
+- [x] `RealtimeMonitoringPointService` - 实时监测点位服务 ✅
+- [x] `SensorService` - 传感器服务 ✅
+- [x] `MonitoredPointAlarmCategoryRelService` - 点位告警分类关联服务 ✅
 
 #### 网关/MQTT
-- [ ] `GatewayService` - 网关服务
-- [ ] `MqttService` - MQTT 服务
+- [x] `GatewayService` - 网关服务 ✅
+- [x] `MqttService` - MQTT 服务 ✅
 - [ ] `MqttMessageBackgroundService` - MQTT 消息后台服务
-- [ ] `GatewaySyncJob` - 网关同步任务
+- [x] `GatewaySyncJob` - 网关同步任务 ✅
 - [ ] `StreamingGatewayService` - 流媒体网关服务
 
 #### 数据绑定/策略
-- [ ] `DataBindingItemService` - 数据绑定项服务
-- [ ] `DataStrategyService` - 数据策略服务
+- [x] `DataBindingItemService` - 数据绑定项服务 ✅
+- [x] `DataStrategyService` - 数据策略服务 ✅
 - [ ] `StrategyStateService` - 策略状态服务
 - [ ] `BindingItemStrategyRelService` - 绑定项策略关联服务
 
 #### 告警系统
-- [ ] `AlarmNotificationHub` - SignalR 告警推送 Hub
-- [ ] `AlarmNotificationService` - 告警通知服务
-- [ ] `AlarmCategoryService` - 告警分类服务
+- [x] `AlarmNotificationHub` - SignalR 告警推送 Hub ✅
+- [x] `AlarmNotificationService` - 告警通知服务 ✅
+- [x] `AlarmCategoryService` - 告警分类服务 ✅
 - [ ] `CollectorService` - 告警采集服务
+- [x] `AlarmRecordService` - 告警记录服务 ✅
 
 ### Hangfire 后台任务（已列出 13 个）
 
-- [x] `VoiceprintCaptureJob` - 声纹采集任务（已有文档）
-- [ ] `VoiceprintProcessedCleanupJob` - 声纹处理后清理任务
-- [ ] `PatrolJobManager` - 巡检任务调度器
-- [ ] `PatrolSystemCleanupJob` - 巡检系统清理
-- [ ] `GatewaySyncJob` - 网关同步任务
-- [ ] `VisualGatewayHealthCheckJob` - 可视化网关健康检查
-- [ ] `PointDataCleanupJob` - 点位数据清理
-- [ ] `PointValueCacheCleanupJob` - 点位值缓存清理
-- [ ] `InfraredTemperatureCollectionJob` - 红外温度采集
-- [ ] `EnvironmentDetectionCollectionJob` - 环境监测采集
-- [ ] `CameraResourceCleanupJob` - 摄像机资源清理
-- [ ] `ISAPIResourceCleanupJob` - ISAPI 资源清理
+- [x] `VoiceprintCaptureJob` - 声纹采集任务（已有文档） ✅
+- [x] `VoiceprintProcessedCleanupJob` - 声纹处理后清理任务 ✅
+- [x] `PatrolJobManager` - 巡检任务调度器 ✅
+- [x] `PatrolSystemCleanupJob` - 巡检系统清理 ✅
+- [x] `GatewaySyncJob` - 网关同步任务 ✅
+- [x] `VisualGatewayHealthCheckJob` - 可视化网关健康检查 ✅
+- [x] `PointDataCleanupJob` - 点位数据清理 ✅
+- [x] `PointValueCacheCleanupJob` - 点位值缓存清理 ✅
+- [x] `InfraredTemperatureCollectionJob` - 红外温度采集 ✅
+- [x] `EnvironmentDetectionCollectionJob` - 环境监测采集 ✅
+- [x] `CameraResourceCleanupJob` - 摄像机资源清理 ✅
+- [x] `ISAPIResourceCleanupJob` - ISAPI 资源清理 ✅
 - [ ] `BackupDataBaseJob` - 数据库备份任务
+
+## P0.5 - 流程与管道文档
+
+### 事件驱动架构
+- [x] `EventDrivenPipeline` - 事件驱动管道 ✅
+
+### 数据处理流程
+- [x] `AudioProcessingPipeline` - 音频处理管道 ✅
+- [x] `AudioAcquisitionFlow` - 音频采集流程 ✅
+- [x] `IEC61850ReportPipeline` - IEC61850 上报管道 ✅
 
 ## P1 - API 文档
 
 ### 声纹模块 API
 
 #### VoiceprintPortalAppService
-- [ ] `GET /api/app/voiceprint/standard-audios` - 标准音频库列表
-- [ ] `POST /api/app/voiceprint/standard-audios` - 添加标准音频
-- [ ] `PUT /api/app/voiceprint/standard-audios/{id}` - 更新标准音频
-- [ ] `DELETE /api/app/voiceprint/standard-audios/{id}` - 删除标准音频
-- [ ] `GET /api/app/voiceprint/test-audios` - 测试音频列表
-- [ ] `POST /api/app/voiceprint/test-audios/import` - 导入测试音频
-- [ ] `POST /api/app/voiceprint/test-audios/{id}/recognize` - 触发识别
-- [ ] `DELETE /api/app/voiceprint/test-audios/{id}` - 删除测试音频
-- [ ] `POST /api/app/voiceprint/reports/generate-from-audio` - 从音频生成报告
-- [ ] `GET /api/app/voiceprint/reports` - 报告列表
-- [ ] `DELETE /api/app/voiceprint/reports/{id}` - 删除报告
-- [ ] `POST /api/app/voiceprint/algorithm/switch` - 切换算法模式
-- [ ] `GET /api/app/voiceprint/algorithm/status` - 获取算法状态
+- [x] `VoiceprintAPI` - 声纹门户 API 文档 ✅
 
 #### VoiceprintAudioAppService
-- [ ] `GET /api/app/voiceprint/audios` - 音频记录列表
-- [ ] `GET /api/app/voiceprint/audios/{id}` - 获取音频详情
-- [ ] `DELETE /api/app/voiceprint/audios/{id}` - 删除音频记录
-- [ ] `POST /api/app/voiceprint/audios/{id}/process` - 处理音频
-- [ ] `POST /api/app/voiceprint/audios/download` - 批量下载音频
-- [ ] `POST /api/app/voiceprint/audios/{id}/recognition-result` - 获取识别结果
+- [x] `VoiceprintAudioInternalAPI` - 音频内部 API 文档 ✅
 
 ### 告警模块 API
-
-- [ ] `GET /api/app/voiceprint/alarms` - 告警列表
-- [ ] `GET /api/app/voiceprint/alarms/monthly-stat` - 月度统计
-- [ ] `GET /api/app/voiceprint/alarms/device-options` - 设备选项
-- [ ] `PUT /api/app/voiceprint/alarms/{alarmId}` - 处理告警
-- [ ] `GET /api/app/voiceprint/alarm-categories` - 告警分类列表
+- [x] `AlarmAPI` - 告警 API 文档 ✅
 
 ### 设备台账 API
-
-- [ ] `GET /api/app/voiceprint/assets/tree` - 设备台账树
-- [ ] `GET /api/app/voiceprint/assets/{monitoredObjectId}` - 设备基础信息
-- [ ] `GET /api/app/voiceprint/assets/{monitoredObjectId}/trend` - 设备运行趋势
-- [ ] `GET /api/app/voiceprint/assets/{monitoredObjectId}/anomaly-mix` - 设备异常分布
-- [ ] `GET /api/app/voiceprint/assets/{monitoredObjectId}/logs` - 设备巡检日志
-- [ ] `POST /api/app/voiceprint/assets/{monitoredObjectId}/processed-audios/download` - 批量下载音频
+- [x] `AssetsAPI` - 设备台账 API 文档 ✅
 
 ### 仪表板 API
-
-- [ ] `GET /api/app/voiceprint/dashboard/overview` - 巡视统计
-- [ ] `GET /api/app/voiceprint/dashboard/records` - 巡视记录列表
-- [ ] `GET /api/app/voiceprint/dashboard/records/{groupId}` - 巡视记录详情
-- [ ] `GET /api/app/voiceprint/dashboard/system-status` - 系统状态（电子沙盘）
-- [ ] `GET /api/app/voiceprint/dashboard/alarms` - 首页告警
-- [ ] `POST /api/app/voiceprint/dashboard/generate-alarm-report` - 生成告警报告
+- [x] `DashboardAPI` - 仪表板 API 文档 ✅
 
 ### 报告模块 API
-
-- [ ] `POST /api/app/voiceprint/reports/export` - 导出智能巡视报表
-- [ ] `GET /api/app/voiceprint/reports/templates` - 报告模板列表
-- [ ] `POST /api/app/voiceprint/reports/templates` - 创建报告模板
-- [ ] `PUT /api/app/voiceprint/reports/templates/{id}` - 更新报告模板
-- [ ] `DELETE /api/app/voiceprint/reports/templates/{id}` - 删除报告模板
+- [x] `ReportAPI` - 报告 API 文档 ✅
 
 ### 账户 API
-
-- [ ] `POST /api/app/account/login` - 用户登录
-- [ ] `GET /api/app/account` - 获取当前账户信息
-- [ ] `POST /api/app/account/logout` - 用户登出
-- [ ] `PUT /api/app/account/password` - 修改密码
+- [x] `AccountAPI` - 账户 API 文档 ✅
 
 ### 传感器数据 API
+- [x] `PointDataAPI` - 传感器数据 API 文档 ✅
 
-- [ ] `GET /api/app/point-data/latest` - 最新点位数据
-- [ ] `GET /api/app/point-data/history` - 历史点位数据
-- [ ] `GET /api/app/point-data/batch` - 批量获取点位数据
-- [ ] `POST /api/app/point-data/report` - 上报点位数据
+### 智能变电站 API
+- [x] `IntelliSubAPI` - 智能变电站 API 文档 ✅
 
 ## P2 - 其他重要模块
 
 ### 流媒体/摄像机
-- [ ] `CameraService` - 摄像机服务
-- [ ] `MediaService` - 媒体服务
-- [ ] `StreamingApiService` - 流媒体 API 服务
+- [x] `CameraService` - 摄像机服务 ✅
+- [x] `MediaService` - 媒体服务 ✅
+- [x] `StreamingApiService` - 流媒体 API 服务 ✅
 - [ ] `NvrService` - NVR 服务
-- [ ] `PresetService` - 预置位服务
+- [x] `PresetService` - 预置位服务 ✅
 - [ ] `PtzPresetAppService` - PTZ 预置位应用服务
-- [ ] `CameraResourceCleanupJob` - 摄像机资源清理任务
+- [x] `CameraResourceCleanupJob` - 摄像机资源清理任务 ✅
 
 ### AI 识别
-- [ ] `AIRecognitionService` - AI 识别服务
+- [x] `AIRecognitionService` - AI 识别服务 ✅
 - [ ] `RecognitionApiService` - 识别 API 服务
 
 ### 系统分析/报表
-- [ ] `SystemAnalysisService` - 系统分析服务
-- [ ] `SystemStatisticsService` - 系统统计服务
+- [x] `SystemAnalysisService` - 系统分析服务 ✅
+- [x] `SystemStatisticsService` - 系统统计服务 ✅
 - [ ] `ReportService` - 报告服务
 
 ### 变电站管理
@@ -160,34 +127,35 @@
 - [ ] `ISAPIResourceCleanupJob` - ISAPI 资源清理任务
 
 ### 数据采集
-- [ ] `InfraredTemperatureCollectionJob` - 红外温度采集
-- [ ] `EnvironmentDetectionCollectionJob` - 环境监测采集
+- [x] `InfraredTemperatureCollectionJob` - 红外温度采集 ✅
+- [x] `EnvironmentDetectionCollectionJob` - 环境监测采集 ✅
 
 ### 数据清理
-- [ ] `PointDataCleanupJob` - 点位数据清理
-- [ ] `PointValueCacheCleanupJob` - 点位值缓存清理
+- [x] `PointDataCleanupJob` - 点位数据清理 ✅
+- [x] `PointValueCacheCleanupJob` - 点位值缓存清理 ✅
 
 ## P3 - 基础设施模块
 
 ### audit-logging（审计日志）
-- [ ] 审计日志概述
+- [x] 审计日志概述 ✅
 - [ ] `AuditLogService` - 审计日志服务
 - [ ] `AuditLogActionService` - 审计日志操作服务
 - [ ] 审计日志查询接口
 
 ### tenant-management（多租户）
-- [ ] 多租户概述
+- [x] 多租户概述 ✅
 - [ ] `TenantService` - 租户服务
 - [ ] `TenantConnectionService` - 租户连接服务
 - [ ] 租户管理接口
 
 ### setting-management（系统设置）
-- [ ] 系统设置概述
+- [x] 系统设置概述 ✅
 - [ ] `SettingService` - 设置服务
 - [ ] `SettingGroupService` - 设置组服务
 - [ ] 设置管理接口
 
 ### RBAC 完整功能
+- [x] RBAC 概述 ✅
 - [ ] `MenuService` - 菜单服务
 - [ ] `RoleService` - 角色服务
 - [ ] `DepartmentService` - 部门服务

@@ -16,6 +16,169 @@ Authorization: Bearer {token}
 
 ---
 
+## 仪表板
+
+### 获取总览统计
+
+**接口**: `GET /dashboard/overview`
+
+**描述**: 获取声纹监控系统的总览统计数据
+
+**响应**:
+```json
+{
+  "success": true,
+  "data": {
+    "totalDays": 30,
+    "totalCaptureCount": 150
+  }
+}
+```
+
+### 获取每日巡视记录
+
+**接口**: `GET /dashboard/records`
+
+**请求参数**:
+```
+date: 日期（默认为当天）
+```
+
+**响应**: 返回指定日期的巡视记录列表
+
+### 获取巡视记录详情
+
+**接口**: `GET /dashboard/records/{groupId:guid}`
+
+**描述**: 获取指定批次ID的巡视记录详情
+
+### 获取系统状态
+
+**接口**: `GET /dashboard/system-status`
+
+**描述**: 获取声纹采集和识别系统的运行状态
+
+### 获取告警列表
+
+**接口**: `GET /dashboard/alarms`
+
+**描述**: 获取仪表板显示的告警列表
+
+### 生成告警报告
+
+**接口**: `POST /dashboard/generate-alarm-report`
+
+**描述**: 生成告警统计报告
+
+---
+
+## 资产管理
+
+### 获取资产树
+
+**接口**: `GET /assets/tree`
+
+**描述**: 获取监控对象的层级结构树
+
+### 获取资产详情
+
+**接口**: `GET /assets/{monitoredObjectId:guid}`
+
+**描述**: 获取指定监控对象的详细信息
+
+### 获取设备趋势
+
+**接口**: `GET /assets/{monitoredObjectId:guid}/trend`
+
+**描述**: 获取设备声纹趋势数据
+
+### 获取异常混合数据
+
+**接口**: `GET /assets/{monitoredObjectId:guid}/anomaly-mix`
+
+**描述**: 获取设备的异常混合数据
+
+### 获取设备日志
+
+**接口**: `GET /assets/{monitoredObjectId:guid}/logs`
+
+**描述**: 获取设备的操作和事件日志
+
+### 下载已处理音频
+
+**接口**: `GET /assets/{monitoredObjectId:guid}/processed-audios/download`
+
+**描述**: 批量下载指定设备的已处理音频文件
+
+---
+
+## 采集器日志
+
+### 获取采集器日志
+
+**接口**: `GET /collector/logs`
+
+**描述**: 获取声纹采集器的运行日志
+
+**请求参数**:
+```
+deviceId: 设备ID（可选）
+startTime: 开始时间
+endTime: 结束时间
+pageIndex: 页码
+pageSize: 每页大小
+```
+
+**响应**:
+```json
+{
+  "success": true,
+  "data": {
+    "totalCount": 100,
+    "items": [
+      {
+        "id": "guid",
+        "deviceId": "guid",
+        "deviceName": "1#电机",
+        "collectedAt": "2026-06-03T10:00:00Z",
+        "status": "Success",
+        "errorMessage": null
+      }
+    ]
+  }
+}
+```
+
+---
+
+## 告警管理
+
+### 获取告警列表
+
+**接口**: `GET /alarms`
+
+**描述**: 获取声纹告警记录列表
+
+### 更新告警状态
+
+**接口**: `PUT /alarms/{alarmId:guid}`
+
+**描述**: 更新告警的处理状态
+
+### 获取告警月度统计
+
+**接口**: `GET /alarms/monthly-stat`
+
+**描述**: 获取告警的月度统计数据
+
+### 获取告警设备选项
+
+**接口**: `GET /alarms/device-options`
+
+**描述**: 获取可用于告警筛选的设备选项列表
+
+---
+
 ## 标准音频库管理
 
 ### 获取标准音频列表
@@ -66,56 +229,32 @@ Authorization: Bearer {token}
 
 **响应**: 返回创建的标准音频对象
 
-### 更新标准音频
+### 获取随机标准音频
 
-**接口**: `PUT /standard-audios/{id}`
+**接口**: `GET /standard-audios/random`
 
-**请求参数**: 同创建
-
-### 删除标准音频
-
-**接口**: `DELETE /standard-audios/{id}`
-
----
-
-## 测试音频管理
-
-### 获取测试音频列表
-
-**接口**: `GET /test-audios`
-
-**请求参数**:
-```json
-{
-  "deviceId": "guid",
-  "startTime": "2026-06-01",
-  "endTime": "2026-06-03",
-  "recognitionStatus": "Pending",
-  "pageIndex": 1,
-  "pageSize": 20
-}
-```
+**描述**: 获取一个随机的标准音频用于测试或对比
 
 **响应**:
 ```json
 {
   "success": true,
   "data": {
-    "items": [
-      {
-        "id": "guid",
-        "deviceId": "guid",
-        "audioPath": "/path/to/audio.wav",
-        "recognitionStatus": "Completed",
-        "similarity": 85.5,
-        "matchedStandardAudioId": "guid",
-        "createdAt": "2026-06-01T10:00:00Z"
-      }
-    ],
-    "total": 50
+    "id": "guid",
+    "name": "电机正常声音",
+    "deviceType": "Motor",
+    "audioPath": "/path/to/audio.wav",
+    "features": "...",
+    "createdAt": "2026-06-01T10:00:00Z"
   }
 }
 ```
+
+
+---
+
+## 测试音频管理
+
 
 ### 导入测试音频并识别
 
@@ -143,42 +282,8 @@ triggerRecognition: 是否自动识别（true/false）
 }
 ```
 
-### 触发识别
 
-**接口**: `POST /test-audios/{id}/recognize`
 
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "taskId": "guid",
-    "status": "Processing"
-  }
-}
-```
-
-### 获取识别结果
-
-**接口**: `GET /test-audios/{id}/recognition-result`
-
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "similarity": 85.5,
-    "matchedStandardAudioId": "guid",
-    "matchedStandardAudioName": "电机正常声音",
-    "features": "...",
-    "recognizedAt": "2026-06-01T10:05:00Z"
-  }
-}
-```
-
-### 删除测试音频
-
-**接口**: `DELETE /test-audios/{id}`
 
 ---
 
@@ -306,24 +411,6 @@ triggerRecognition: 是否自动识别（true/false）
 }
 ```
 
-### 获取报告列表
-
-**接口**: `GET /reports`
-
-**请求参数**:
-```json
-{
-  "startTime": "2026-06-01",
-  "endTime": "2026-06-03",
-  "reportType": "Patrol",
-  "pageIndex": 1,
-  "pageSize": 20
-}
-```
-
-### 删除报告
-
-**接口**: `DELETE /reports/{id}`
 
 ---
 
@@ -355,22 +442,6 @@ triggerRecognition: 是否自动识别（true/false）
 }
 ```
 
-### 获取算法状态
-
-**接口**: `GET /algorithm/status`
-
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "currentMode": "Auto",
-    "isProcessing": false,
-    "queueSize": 0,
-    "lastProcessTime": "2026-06-03T09:55:00Z"
-  }
-}
-```
 
 ---
 

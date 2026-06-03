@@ -5,7 +5,7 @@
 
 ## 基础路径
 ```
-/api/app/voiceprint/point-data
+/api/app/intellisub/point-data
 ```
 
 ## 认证
@@ -441,7 +441,7 @@ pointIds.forEach(id => params.append('pointIds[]', id));
 params.append('deviceId', 'device-001');
 params.append('sensorKey', 'temp01');
 
-const response = await fetch(`/api/app/voiceprint/point-data/latest?${params}`, {
+const response = await fetch(`/api/app/intellisub/point-data/latest?${params}`, {
   headers: {
     'Authorization': `Bearer ${token}`
   }
@@ -462,7 +462,7 @@ const params = new URLSearchParams({
   maxResultCount: '48'
 });
 
-const response = await fetch(`/api/app/voiceprint/point-data/history?${params}`, {
+const response = await fetch(`/api/app/intellisub/point-data/history?${params}`, {
   headers: {
     'Authorization': `Bearer ${token}`
   }
@@ -486,7 +486,7 @@ const data = {
   alarmLevel: 0
 };
 
-const response = await fetch('/api/app/voiceprint/point-data', {
+const response = await fetch('/api/app/intellisub/point-data', {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${token}`,
@@ -510,7 +510,7 @@ const params = new URLSearchParams({
   sorting: 'ts desc'
 });
 
-const response = await fetch(`/api/app/voiceprint/point-data?${params}`, {
+const response = await fetch(`/api/app/intellisub/point-data?${params}`, {
   headers: {
     'Authorization': `Bearer ${token}`
   }
