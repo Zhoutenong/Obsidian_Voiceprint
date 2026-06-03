@@ -25,7 +25,6 @@
 
 **相关文档**:
 - [前端 23 个接口文档](../../../frontend-api-interfaces.md) - 所有接口的详细说明
-- Obsidian 知识库：[前端接口集成](../ApiDocs/前端接口集成.md)
 
 ---
 
@@ -84,7 +83,7 @@
 
 **相关文档**:
 - [前端 API 流程图](#前端-api-流程图) - 可视化展示接口调用流程
-- Obsidian 知识库：[API 文档索引](../ApiDocs/README.md)
+- [Obsidian 知识库首页](../README.md) - 所有 API 文档索引
 
 ---
 
@@ -152,7 +151,7 @@
 **前端集成**:
 - [前端 23 个接口文档](../../../frontend-api-interfaces.md)
 - [前端 API 流程图](../../../data-flow-diagrams/)
-- Obsidian: [前端接口集成](../ApiDocs/前端接口集成.md)
+- Obsidian: [API 文档索引](../API/README.md)
 
 **声纹分析**:
 - [Python 声纹服务方案](../../../voiceprint/02-python-voiceprint-service方案.md)

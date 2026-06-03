@@ -5,8 +5,10 @@
 
 ## 基础路径
 ```
-/api/app/intellisub/point-data
+/api/app/point-data
 ```
+
+**注意**：此路径不带 `intellisub` 前缀。与 IntelliSubAPI.md 中记录的自定义端点保持一致。
 
 ## 认证
 所有接口都需要 JWT Token 认证：
@@ -441,7 +443,7 @@ pointIds.forEach(id => params.append('pointIds[]', id));
 params.append('deviceId', 'device-001');
 params.append('sensorKey', 'temp01');
 
-const response = await fetch(`/api/app/intellisub/point-data/latest?${params}`, {
+const response = await fetch(`/api/app/point-data/latest?${params}`, {
   headers: {
     'Authorization': `Bearer ${token}`
   }
@@ -462,7 +464,7 @@ const params = new URLSearchParams({
   maxResultCount: '48'
 });
 
-const response = await fetch(`/api/app/intellisub/point-data/history?${params}`, {
+const response = await fetch(`/api/app/point-data/history?${params}`, {
   headers: {
     'Authorization': `Bearer ${token}`
   }
@@ -486,7 +488,7 @@ const data = {
   alarmLevel: 0
 };
 
-const response = await fetch('/api/app/intellisub/point-data', {
+const response = await fetch('/api/app/point-data', {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${token}`,
@@ -510,7 +512,7 @@ const params = new URLSearchParams({
   sorting: 'ts desc'
 });
 
-const response = await fetch(`/api/app/intellisub/point-data?${params}`, {
+const response = await fetch(`/api/app/point-data?${params}`, {
   headers: {
     'Authorization': `Bearer ${token}`
   }

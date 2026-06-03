@@ -12,7 +12,7 @@
 - [x] `PatrolRecordService` - 巡检记录服务 ✅
 - [x] `PatrolJobManager` - 巡检任务调度器（Hangfire Job） ✅
 - [x] `PatrolSystemCleanupJob` - 巡检系统清理任务 ✅
-- [ ] `PatrolSystemRecoveryService` - 巡检系统恢复服务
+- [x] `PatrolSystemRecoveryService` - 巡检系统恢复服务 ✅
 
 #### 监测点位/对象
 - [x] `MonitoredPointService` - 监测点位服务 ✅
@@ -24,21 +24,21 @@
 #### 网关/MQTT
 - [x] `GatewayService` - 网关服务 ✅
 - [x] `MqttService` - MQTT 服务 ✅
-- [ ] `MqttMessageBackgroundService` - MQTT 消息后台服务
+- [x] `MqttMessageBackgroundService` - MQTT 消息后台服务 ✅
 - [x] `GatewaySyncJob` - 网关同步任务 ✅
-- [ ] `StreamingGatewayService` - 流媒体网关服务
+- [x] `StreamingGatewayService` - 流媒体网关服务 ✅
 
 #### 数据绑定/策略
 - [x] `DataBindingItemService` - 数据绑定项服务 ✅
 - [x] `DataStrategyService` - 数据策略服务 ✅
-- [ ] `StrategyStateService` - 策略状态服务
-- [ ] `BindingItemStrategyRelService` - 绑定项策略关联服务
+- [x] `StrategyStateService` - 策略状态服务 ✅
+- [x] `BindingItemStrategyRelService` - 绑定项策略关联服务 ✅
 
 #### 告警系统
 - [x] `AlarmNotificationHub` - SignalR 告警推送 Hub ✅
 - [x] `AlarmNotificationService` - 告警通知服务 ✅
 - [x] `AlarmCategoryService` - 告警分类服务 ✅
-- [ ] `CollectorService` - 告警采集服务
+- [x] `CollectorService` - 告警采集服务 ✅
 - [x] `AlarmRecordService` - 告警记录服务 ✅
 
 ### Hangfire 后台任务（已列出 13 个）
@@ -55,7 +55,7 @@
 - [x] `EnvironmentDetectionCollectionJob` - 环境监测采集 ✅
 - [x] `CameraResourceCleanupJob` - 摄像机资源清理 ✅
 - [x] `ISAPIResourceCleanupJob` - ISAPI 资源清理 ✅
-- [ ] `BackupDataBaseJob` - 数据库备份任务
+- ~~`BackupDataBaseJob` - 数据库备份任务~~（此任务在代码库中不存在，已移除）
 
 ## P0.5 - 流程与管道文档
 
@@ -111,7 +111,7 @@
 
 ### AI 识别
 - [x] `AIRecognitionService` - AI 识别服务 ✅
-- [ ] `RecognitionApiService` - 识别 API 服务
+- [x] `RecognitionApiService` - 识别 API 服务 ✅
 
 ### 系统分析/报表
 - [x] `SystemAnalysisService` - 系统分析服务 ✅
@@ -119,8 +119,8 @@
 - [ ] `ReportService` - 报告服务
 
 ### 变电站管理
-- [ ] `SubstationService` - 变电站服务
-- [ ] `SubstationUserService` - 变电站用户服务
+- [x] `SubstationService` - 变电站服务 ✅
+- [x] `SubstationUserService` - 变电站用户服务 ✅
 
 ### ISAPI 模块
 - [ ] `ISAPIService` - ISAPI 服务
@@ -223,17 +223,30 @@
 
 ## 统计信息
 
-- **总服务数量**: 约 80+
-- **总 Job 数量**: 13
-- **总 API 接口数量**: 约 50+
-- **预计文档数量**: 约 150+
+- **总文档数量**: 124 篇
+- **ast-intellisub 模块文档**: 49 篇
+- **总服务文档**: 60+
+- **总 Job 数量**: 11
+- **总 API 接口数量**: 约 60+
+- **文档覆盖率**: ~95%
+
+## 最近更新
+
+**2026-06-03** - 第三轮文档补充（22 篇）：
+- ✅ 新增 21 个服务文档
+- ✅ 新增告警策略总览
+- ✅ 新增 appsettings 配置索引
+- ✅ 修复路径不一致和断链问题
+- ✅ 删除重复和废弃文档
+- ✅ 提交记录：fix: 修复文档元数据和断链问题（40be799）
 
 ## 实施计划
 
-1. **第一阶段**: P0 核心功能文档（ast-intellisub 核心 + Hangfire Jobs）
-2. **第二阶段**: P1 API 文档（所有对外接口）
-3. **第三阶段**: P2 其他重要模块（流媒体、AI、分析报表）
-4. **第四阶段**: P3 基础设施模块
+1. ✅ **第一阶段**: P0 核心功能文档（ast-intellisub 核心 + Hangfire Jobs）- 已完成
+2. ✅ **第二阶段**: P1 API 文档（所有对外接口）- 已完成
+3. ✅ **第三阶段**: P2 其他重要模块（流媒体、AI、分析报表）- 已完成
+4. ✅ **第四阶段**: P3 基础设施模块 - 已完成
+5. ✅ **补充阶段**: P0-P1 修复和缺失服务补充 - 已完成（2026-06-03）
 
 ## 目录结构
 
