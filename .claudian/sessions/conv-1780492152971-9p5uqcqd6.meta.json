@@ -1,0 +1,23 @@
+{
+  "id": "conv-1780492152971-9p5uqcqd6",
+  "providerId": "claude",
+  "title": "Compare SQL and SQLite databases",
+  "titleGenerationStatus": "success",
+  "createdAt": 1780492152975,
+  "updatedAt": 1780492272492,
+  "lastResponseAt": 1780492272492,
+  "sessionId": "1d14159b-4763-47c0-8554-5749aab281ec",
+  "providerState": {
+    "providerSessionId": "1d14159b-4763-47c0-8554-5749aab281ec"
+  },
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 29040,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 12480,
+    "contextWindow": 200000,
+    "contextTokens": 41520,
+    "percentage": 21,
+    "contextWindowIsAuthoritative": true
+  }
+}
