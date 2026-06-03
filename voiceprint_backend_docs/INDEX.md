@@ -26,6 +26,7 @@
 
 - [[ABP框架入门]] — ABP Framework 基础知识
 - [[项目架构概览]] — 整体架构设计
+- [[Modules/ast-intellisub/变电站监视范围概览]] — 模块划分、数据驱动方式与监视内容总览
 - [[数据库设计]] — 数据库结构说明
 
 ### 🔧 核心模块
@@ -58,6 +59,7 @@ Modules/            模块文档（按业务模块组织）
   │   ├─ 权限定义服务.md
   │   └─ RbacOverview.md
   ├─ ast-intellisub/ 变电站监控模块
+  │   ├─ 变电站监视范围概览.md  模块/数据流/监视内容总览
   │   ├─ 设备管理服务.md
   │   ├─ 设备告警流程.md
   │   ├─ Patrol/      巡检系统
@@ -105,6 +107,14 @@ Modules/            模块文档（按业务模块组织）
   │   ├─ AI/          AI 识别
   │   │   ├─ AIRecognitionService.md
   │   │   └─ AlgorithmService.md
+  │   ├─ Camera/      摄像机/流媒体
+  │   │   ├─ CameraService.md
+  │   │   ├─ MediaService.md
+  │   │   ├─ StreamingApiService.md
+  │   │   ├─ PresetService.md
+  │   │   ├─ NvrService.md
+  │   │   ├── StreamingTransferService.md
+  │   │   └─ CameraResourceManager.md
   │   ├─ Substation/   变电站管理
   │   │   ├─ SubstationService.md
   │   │   ├─ SubstationUserService.md
@@ -132,6 +142,8 @@ Modules/            模块文档（按业务模块组织）
   │   ├─ TDengine集成.md
   │   └─ 数据上报流程.md
   ├─ ast-voiceprint/ 声纹分析模块
+  │   ├─ README.md
+  │   ├─ VoiceprintCaptureRuntimeStateService.md
   │   ├─ 声纹采集服务.md
   │   └─ 声纹分析流程.md
   ├─ isapi/         工业协议集成模块
@@ -324,6 +336,9 @@ INDEX.md            本文件（知识图谱索引）
 ---
 
 ### ✅ ast-intellisub 模块（变电站监控）
+
+#### 概览
+[[Modules/ast-intellisub/变电站监视范围概览]] — 主要模块、数据驱动方式、监视对象与物理量
 
 #### 设备管理
 [[Modules/ast-intellisub/设备管理服务]] · [[Classes/Device]]

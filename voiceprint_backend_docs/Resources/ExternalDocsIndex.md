@@ -105,8 +105,8 @@
 ```markdown
 参见 Obsidian 知识库：
 - [系统架构](voiceprint_docs/voiceprint_backend_docs/Architecture/整体架构设计.md)
-- [API 文档](voiceprint_docs/voiceprint_backend_docs/API/README.md)
-- [项目开发指南](voiceprint_docs/voiceprint_backend_docs/README.md)
+- [项目文档首页](voiceprint_docs/voiceprint_backend_docs/README.md)
+- [配置说明](voiceprint_docs/voiceprint_backend_docs/Configuration/AppSettingsIndex.md)
 ```
 
 #### 从 Obsidian 知识库到外部文档

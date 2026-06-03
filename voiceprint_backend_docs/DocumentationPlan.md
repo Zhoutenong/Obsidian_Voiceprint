@@ -112,6 +112,7 @@
 ### AI 识别
 - [x] `AIRecognitionService` - AI 识别服务 ✅
 - [x] `RecognitionApiService` - 识别 API 服务 ✅
+- [x] `VoiceprintCaptureRuntimeStateService` - 声纹采集运行时状态服务 ✅
 
 ### 系统分析/报表
 - [x] `SystemAnalysisService` - 系统分析服务 ✅
@@ -183,8 +184,10 @@
 - [x] `FileService` - 文件服务 ✅
 - [x] `ApplicationStartupService` - 应用启动服务 ✅
 - [x] `DataIntegrityCheckService` - 数据完整性检查服务 ✅
-- [ ] `RealtimeDataHub` - 实时数据推送 Hub
-- [ ] `DashboardDataHub` - 仪表板数据推送 Hub
+- ~~`RealtimeDataHub` - 实时数据推送 Hub~~（未实现，已从计划删除）
+- ~~`DashboardDataHub` - 仪表板数据推送 Hub~~（未实现，已从计划删除）
+
+**注意**：这些 Hub 在代码库中不存在，不需要创建文档。实际使用的是 `RealtimeMonitoringPointService` 进行实时数据推送。
 
 ## 文档模板
 
