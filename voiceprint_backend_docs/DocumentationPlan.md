@@ -104,7 +104,7 @@
 - [x] `CameraService` - 摄像机服务 ✅
 - [x] `MediaService` - 媒体服务 ✅
 - [x] `StreamingApiService` - 流媒体 API 服务 ✅
-- [ ] `NvrService` - NVR 服务
+- [x] `NvrService` - NVR 服务 ✅
 - [x] `PresetService` - 预置位服务 ✅
 - [ ] `PtzPresetAppService` - PTZ 预置位应用服务
 - [x] `CameraResourceCleanupJob` - 摄像机资源清理任务 ✅
@@ -116,15 +116,16 @@
 ### 系统分析/报表
 - [x] `SystemAnalysisService` - 系统分析服务 ✅
 - [x] `SystemStatisticsService` - 系统统计服务 ✅
-- [ ] `ReportService` - 报告服务
+- [ ] `ReportService` - 报告服务（注意：文件不存在，需创建或从 INDEX 删除引用）
 
 ### 变电站管理
 - [x] `SubstationService` - 变电站服务 ✅
 - [x] `SubstationUserService` - 变电站用户服务 ✅
+- [x] `SubstationTypeService` - 变电站类型服务 ✅
 
 ### ISAPI 模块
 - [ ] `ISAPIService` - ISAPI 服务
-- [ ] `ISAPIResourceCleanupJob` - ISAPI 资源清理任务
+- [x] `ISAPIResourceCleanupJob` - ISAPI 资源清理任务 ✅（已在 Hangfire/Camera/ 目录）
 
 ### 数据采集
 - [x] `InfraredTemperatureCollectionJob` - 红外温度采集 ✅
@@ -163,16 +164,18 @@
 - [ ] `OperationLogService` - 操作日志服务
 
 ### IEC104 协议
-- [ ] IEC104 协议概述
-- [ ] IEC104 连接管理
-- [ ] IEC104 数据上报
-- [ ] IEC104 遥控/遥调
+- ~~IEC104 协议概述~~（此功能代码库中未实现，已移除计划）
+- ~~IEC104 连接管理~~
+- ~~IEC104 数据上报~~
+- ~~IEC104 遥控/遥调~~
+
+**注意**：当前系统使用 IEC61850 协议，IEC104 功能未实现。
 
 ### 其他
-- [ ] `EnumService` - 枚举服务
-- [ ] `FileService` - 文件服务
-- [ ] `ApplicationStartupService` - 应用启动服务
-- [ ] `DataIntegrityCheckService` - 数据完整性检查服务
+- [x] `EnumService` - 枚举服务 ✅
+- [x] `FileService` - 文件服务 ✅
+- [x] `ApplicationStartupService` - 应用启动服务 ✅
+- [x] `DataIntegrityCheckService` - 数据完整性检查服务 ✅
 - [ ] `RealtimeDataHub` - 实时数据推送 Hub
 - [ ] `DashboardDataHub` - 仪表板数据推送 Hub
 

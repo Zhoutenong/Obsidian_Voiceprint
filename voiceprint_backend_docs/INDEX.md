@@ -115,8 +115,6 @@ Modules/            模块文档（按业务模块组织）
   │   │   └─ StreamingTransferService.md
   │   ├─ DataCollection/ 数据采集
   │   │   └─ DataCollectionService.md
-  │   ├─ Report/      报告服务
-  │   │   └─ ReportService.md
   │   └─ Analysis/     系统分析
   │       ├─ SystemAnalysisService.md
   │       └─ SystemStatisticsService.md
@@ -210,6 +208,12 @@ Configuration/      配置文档
   └─ 配置快速参考.md
 Resources/          外部资源索引
   └─ ExternalDocsIndex.md
+    链接到外部实现方案：
+    - [[../../../voiceprint/00-系统架构与功能实现.md|系统架构实现]]
+    - [[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹服务]]
+    - [[../../../voiceprint/03-raspberry-pi-agent方案.md|树莓派边缘采集]]
+    - [[../../../data-flow-diagrams/|前端 API 时序图（6 个 HTML）]]
+    - [[../../../frontend-api-interfaces.md|前端 23 个接口]]
 Templates/          笔记模板
   ├─ 组件笔记模板.md
   ├─ 流程文档模板.md
