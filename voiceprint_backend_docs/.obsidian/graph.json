@@ -1,0 +1,33 @@
+{
+  "collapse-filter": false,
+  "search": false,
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "colorGroups": [],
+  "collapse-color-groups": false,
+  "localColors": false,
+  "groups": [
+    {
+      "query": "tag:#rbac",
+      "color": "#ff6b6b"
+    },
+    {
+      "query": "tag:#intellisub",
+      "color": "#4ecdc4"
+    },
+    {
+      "query": "tag:#voiceprint",
+      "color": "#45b7d1"
+    },
+    {
+      "query": "tag:#isapi",
+      "color": "#96ceb4"
+    },
+    {
+      "query": "tag:#framework",
+      "color": "#a8a8a8"
+    }
+  ]
+}

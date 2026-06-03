@@ -1,0 +1,58 @@
+/*
+ * 状态指示器样式
+ * 用于学习进度标记
+ */
+
+/* 学习状态标签 */
+.status-learning {
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.status-done {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.status-review {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+/* 标签样式 */
+.tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.tag-rbac { background-color: rgba(255, 107, 107, 0.2); }
+.tag-intellisub { background-color: rgba(78, 205, 196, 0.2); }
+.tag-voiceprint { background-color: rgba(69, 183, 209, 0.2); }
+.tag-isapi { background-color: rgba(150, 206, 180, 0.2); }
+.tag-framework { background-color: rgba(168, 168, 168, 0.2); }
+
+/* 属性面板优化 */
+.metadata-container {
+  font-size: 0.9em;
+}
+
+.metadata-properties-head {
+  font-weight: 600;
+}
+
+/* Mermaid 图表样式 */
+.mermaid {
+  text-align: center;
+  margin: 1em 0;
+}
+
+/* 代码块优化 */
+pre {
+  border-radius: 6px;
+  margin: 1em 0;
+}
+
+code {
+  font-size: 0.9em;
+}
