@@ -116,7 +116,7 @@
 ### 系统分析/报表
 - [x] `SystemAnalysisService` - 系统分析服务 ✅
 - [x] `SystemStatisticsService` - 系统统计服务 ✅
-- [ ] `ReportService` - 报告服务（注意：文件不存在，需创建或从 INDEX 删除引用）
+- [x] `ReportService` - 报告服务 ✅
 - [x] `AstPointDataService` - 点位数据服务 ✅
 - [x] `ChildTableNameManager` - 子表名管理器 ✅
 - [x] `LargeTextStorageManager` - 大文本存储管理器 ✅
@@ -131,6 +131,8 @@
 - [x] `ISAPIService` - ISAPI 服务 ✅
 - [x] `Iec61850ApiService` - IEC61850 API 服务 ✅
 - [x] `ISAPIResourceCleanupJob` - ISAPI 资源清理任务 ✅（已在 Hangfire/Camera/ 目录）
+
+**注意**：ISAPI 模块核心服务已完成文档化。
 
 ### 数据采集
 - [x] `InfraredTemperatureCollectionJob` - 红外温度采集 ✅

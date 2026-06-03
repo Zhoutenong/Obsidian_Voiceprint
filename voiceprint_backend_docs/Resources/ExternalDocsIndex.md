@@ -52,7 +52,7 @@
 - 包含完整的技术方案、代码示例和架构说明
 
 **相关文档**:
-- Obsidian 知识库：[系统架构](../Architecture/系统架构.md)
+- Obsidian 知识库：[整体架构设计](../Architecture/整体架构设计.md)
 - Obsidian 知识库：[声纹分析模块](../Modules/声纹分析模块.md)
 
 ---
@@ -104,9 +104,9 @@
 
 ```markdown
 参见 Obsidian 知识库：
-- [系统架构](voiceprint_docs/voiceprint_backend_docs/Architecture/系统架构.md)
-- [API 文档](voiceprint_docs/voiceprint_backend_docs/ApiDocs/README.md)
-- [部署指南](voiceprint_docs/voiceprint_backend_docs/DeploymentGuide/部署指南.md)
+- [系统架构](voiceprint_docs/voiceprint_backend_docs/Architecture/整体架构设计.md)
+- [API 文档](voiceprint_docs/voiceprint_backend_docs/API/README.md)
+- [项目开发指南](voiceprint_docs/voiceprint_backend_docs/README.md)
 ```
 
 #### 从 Obsidian 知识库到外部文档
@@ -146,12 +146,12 @@
 **系统架构和设计**:
 - [系统架构与功能实现](../../../voiceprint/00-系统架构与功能实现.md)
 - [后端改造方案](../../../voiceprint/01-intelli-substation-voiceprint-backend改造方案.md)
-- Obsidian: [系统架构](../Architecture/系统架构.md)
+- Obsidian: [整体架构设计](../Architecture/整体架构设计.md)
 
 **前端集成**:
 - [前端 23 个接口文档](../../../frontend-api-interfaces.md)
 - [前端 API 流程图](../../../data-flow-diagrams/)
-- Obsidian: [API 文档索引](../API/README.md)
+- Obsidian: [项目文档首页](../README.md)
 
 **声纹分析**:
 - [Python 声纹服务方案](../../../voiceprint/02-python-voiceprint-service方案.md)

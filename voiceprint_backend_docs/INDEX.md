@@ -115,6 +115,8 @@ Modules/            模块文档（按业务模块组织）
   │   │   └─ StreamingTransferService.md
   │   ├─ DataCollection/ 数据采集
   │   │   └─ DataCollectionService.md
+  │   ├─ Report/      报告服务
+  │   │   └─ ReportService.md
   │   └─ Analysis/     系统分析
   │       ├─ SystemAnalysisService.md
   │       └─ SystemStatisticsService.md
@@ -159,7 +161,8 @@ API/                API 接口文档
   ├─ Voiceprint/     声纹 API
   │   └─ VoiceprintAPI.md
   ├─ VoiceprintAudio/ 声纹音频内部 API
-  │   └─ VoiceprintAudioInternalAPI.md
+  │   ├─ VoiceprintAudioInternalAPI.md
+  │   └─ VoiceprintAudioUploadAPI.md
   ├─ Report/         报告 API
   │   └─ ReportAPI.md
   ├─ PointData/      传感器数据 API
