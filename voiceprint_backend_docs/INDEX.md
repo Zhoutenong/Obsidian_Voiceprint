@@ -27,7 +27,7 @@
 | **Domain 实体** | ~75% ⬆️ | 45+ 篇实体文档（从62%提升） |
 | **Application 服务** | ~92% | 69+ 篇服务文档 |
 | **Hangfire Jobs** | 100% | 11 个 Job 全部文档化 |
-| **EventHandler** | ~60% ⬆️ | 9 篇事件处理器文档（从0%提升） |
+| **EventHandler** | ~95% ⬆️ | 15 篇事件处理器文档（从60%提升） |
 | **框架/宿主** | 100% | 12 篇框架组件文档 |
 | **管理端 API** | 100% | 4 篇管理端 API 汇总 |
 | **全项目覆盖** | ~85%+ ⬆️ | 核心功能完整，可选扩展待补 |
@@ -185,7 +185,7 @@ Modules/            模块文档（按业务模块组织）
   │   ├─ DataCollection/ 数据采集
   │   │   └─ DataCollectionService.md       ✅
   │   ├─ Report/      报告服务
-  │   │   └─ ReportService.md               ⬜ 规划中
+  │   │   └─ ReportService.md               ✅ 综合报表服务
   │   └─ Analysis/     系统分析
   │       ├─ SystemAnalysisService.md      ✅
   │       └─ SystemStatisticsService.md     ✅
@@ -221,6 +221,9 @@ Modules/            模块文档（按业务模块组织）
       ├─ FileService.md                   ✅
       ├─ DataIntegrityCheckService.md     ✅
       └─ ApplicationStartupService.md     ✅
+Services/           应用服务实现级文档
+  ├─ ReportService.md                   ✅ 综合报表服务（3000+行核心服务）
+  └─ PointDataService.md                ✅ 点位数据API服务
 API/                API 接口文档
   ├─ Account/        账户 API
   │   └─ AccountAPI.md                   ✅
@@ -258,6 +261,12 @@ Pipelines/          数据流程文档
           ├─ NormalDataProcessedHandler.md ✅ 正常数据处理事件
           ├─ PatrolEventHandler.md       ✅ 巡检事件
           └─ Iec61850DataReportHandler.md ✅ IEC61850数据上报事件
+          ├─ GatewayStatusChangedHandler.md ✅ 网关状态变更事件
+          ├─ DeviceStatusEventHandler.md ✅ 设备状态事件
+          ├─ DeviceMetadataEventHandler.md ✅ 设备元数据事件
+          ├─ Iec61850AlarmReportHandler.md ✅ IEC61850告警上报事件
+          ├─ LoginEventHandler.md ✅ 登录事件（RBAC）
+          └─ UserInfoHandler.md ✅ 用户信息查询事件（RBAC）
 Hangfire/           后台任务文档
   ├─ Voiceprint/    声纹相关 Jobs
   │   └─ VoiceprintCaptureJob.md          ✅

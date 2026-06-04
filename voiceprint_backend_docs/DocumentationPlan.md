@@ -13,7 +13,7 @@
 | **Domain 实体** | ~58 个 | ~45 个 | **~75%** ⬆️ | 🟡 显著改善 |
 | **Application 服务** | ~75 个 | ~69 个 | **~92%** | 🟢 基本完整 |
 | **Manager 类** | ~15 个 | ~8 个 | **~53%** ⬆️ | 🟡 部分完成 |
-| **EventHandler** | ~12 个 | ~9 个 | **~75%** ⬆️ | 🟡 从0%提升 |
+| **EventHandler** | ~15 个 | ~15 个 | **~100%** ✅ | 🟢 完整 |
 | **Hangfire Jobs** | 11 个 | 11 个 | **100%** | 🟢 完整 |
 | **框架/宿主** | 12 个 | 12 个 | **100%** | 🟢 完整 |
 | **管理端 API** | 10+ 端点 | 10+ 篇 | **100%** | 🟢 完整 |
@@ -21,7 +21,7 @@
 
 **重大进展**：
 - ✅ **实体覆盖率从 62% → 75%**（新增 13 篇核心实体文档）
-- ✅ **EventHandler 从 0% → 75%**（新增 9 篇事件处理器文档）
+- ✅ **EventHandler 从 60% → 100%**（新增 6 篇事件处理器文档）
 - ✅ **完成 CodeGraph 系统性分析**（首次基于代码图谱的精确统计）
 
 **说明**：统计基于 CodeGraph 工具的实际代码分析，而非估算。总计约 **230+ 篇** Markdown 文档。
@@ -159,8 +159,8 @@
 ### 系统分析/报表
 - [x] `SystemAnalysisService` - 系统分析服务 ✅
 - [x] `SystemStatisticsService` - 系统统计服务 ✅
-- [ ] `ReportService` - 报告服务模块文档（仅有 `API/Report/ReportAPI.md`，缺 `Modules/ast-intellisub/Report/` 服务文档）
-- [ ] `PointDataService` - 点位数据服务模块文档（仅有 `API/PointData/PointDataAPI.md`）
+- [x] `ReportService` - 报告服务模块文档 ✅
+- [x] `PointDataService` - 点位数据服务模块文档 ✅
 
 ### ast-intellisubdata
 - [x] `AstPointDataService` - 时序数据入库服务 ✅
