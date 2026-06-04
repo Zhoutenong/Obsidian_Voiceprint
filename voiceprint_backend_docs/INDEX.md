@@ -77,7 +77,9 @@ Classes/            核心实体文档（45+ 篇，覆盖率 ~75%）
   │   └─ MonitoredPointAlarmCategoryRelEntity.md ✅ 点位-告警分类关联
   ├─ Gateway/       网关实体
   │   ├─ GatewayAggregateRoot.md         ✅ 网关聚合根
+  │   ├─ AstPointEntity.md               ✅ 传感器点位实体
   │   ├─ SensorEntity.md                 ✅ 传感器实体
+  │   ├─ DeviceEntity.md                 ✅ 设备实体
   │   └─ NvrEntity.md                    ✅ NVR实体
   ├─ DataBinding/   数据绑定实体
   │   ├─ DataBindingItemEntity.md        ✅ 绑定项实体
@@ -224,6 +226,15 @@ Modules/            模块文档（按业务模块组织）
 Services/           应用服务实现级文档
   ├─ ReportService.md                   ✅ 综合报表服务（3000+行核心服务）
   └─ PointDataService.md                ✅ 点位数据API服务
+Managers/          领域管理器文档（Domain Manager层）
+  ├─ rbac/          RBAC管理器
+  │   ├─ AccountManager.md              ✅ 账户管理器（JWT令牌、认证）
+  │   ├─ UserManager.md                  ✅ 用户管理器（创建、角色分配）
+  │   └─ RoleManager.md                  ✅ 角色管理器（菜单分配）
+  └─ ast-intellisub/ 变电站监控管理器
+      ├─ AlarmConditionEvaluationManager.md ✅ 告警条件评估管理器
+      ├─ Iec61850MappingManager.md       ✅ IEC61850映射管理器
+      └─ StreamingUrlManager.md          ✅ 流媒体URL管理器
 API/                API 接口文档
   ├─ Account/        账户 API
   │   └─ AccountAPI.md                   ✅
@@ -285,6 +296,8 @@ Hangfire/           后台任务文档
   └─ Camera/        摄像机相关 Jobs
       ├─ CameraResourceCleanupJob.md     ✅
       └─ ISAPIResourceCleanupJob.md     ✅
+  └─ Rbac/          RBAC相关 Jobs
+      └─ BackupDataBaseJob.md            ✅ 数据库备份任务
 Concepts/           架构概念与设计模式
   ├─ ABP仓储模式.md                       ✅
   └─ DDD分层架构.md                       ✅
@@ -379,6 +392,9 @@ INDEX.md            本文件（知识图谱索引）✅
 ### 摄像机任务
 [[Hangfire/Camera/CameraResourceCleanupJob]] — 摄像机资源清理 ✅
 [[Hangfire/Camera/ISAPIResourceCleanupJob]] — ISAPI 资源清理 ✅
+
+### RBAC任务
+[[Hangfire/Rbac/BackupDataBaseJob]] — 数据库备份任务 ✅
 
 ### 声纹任务
 [[Hangfire/Voiceprint/VoiceprintCaptureJob]] — 声纹采集 ✅
