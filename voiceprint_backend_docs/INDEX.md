@@ -273,12 +273,12 @@ Pipelines/          数据流程文档
       ├─ EventDrivenPipeline.md          ✅
       └─ Handlers/     事件处理器
           ├─ EventHandlerOverview.md    ✅ 事件处理器总览
-          ├─ AlarmProcessingEventHandler.md ✅ 告警处理事件
+          ├─ AlarmProcessingService.md       ✅ 告警处理服务
           ├─ AlarmRecordItemCreatedHandler.md ✅ 告警记录创建事件
           ├─ PointValueEventHandler.md    ✅ 点位值事件
           ├─ ProcessedPointValueEventHandler.md ✅ 处理后点位值事件
           ├─ NormalDataProcessedHandler.md ✅ 正常数据处理事件
-          ├─ PatrolEventHandler.md       ✅ 巡检事件
+          ├─ PatrolResultUpdateHandler.md   ✅ 巡检结果更新处理器
           └─ Iec61850DataReportHandler.md ✅ IEC61850数据上报事件
           ├─ GatewayStatusChangedHandler.md ✅ 网关状态变更事件
           ├─ DeviceStatusEventHandler.md ✅ 设备状态事件
