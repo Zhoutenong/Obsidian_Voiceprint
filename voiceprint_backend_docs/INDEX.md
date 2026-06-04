@@ -256,6 +256,11 @@ API/                API 接口文档
   │   └─ ReportAPI.md                    ✅
   ├─ PointData/      传感器数据 API
   │   └─ PointDataAPI.md                 ✅
+  ├─ Admin/         管理端 API（RBAC）
+  │   ├─ AdminAPIIndex.md                ✅ RBAC管理端API汇总
+  │   ├─ UserRoleMenuAPI.md              ✅ 用户角色菜单API
+  │   ├─ SystemConfigAPI.md              ✅ 系统配置API
+  │   └─ MonitorAPI.md                   ✅ 系统监控API
   └─ IntelliSub/     智能变电站 API
       └─ IntelliSubAPI.md                ✅
 Pipelines/          数据流程文档
