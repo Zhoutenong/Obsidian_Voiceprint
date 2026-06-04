@@ -2,27 +2,29 @@
 
 本文档跟踪 `voiceprint_backend_docs` 知识库与代码库的对照状态，列出已完成项与待补充项，按优先级分类。
 
-> **最后审计**：2026-06-03（多 Agent 并行补充后 - Batch 1-3 完成）
+> **最后审计**：2026-06-04（基于 CodeGraph 系统性分析 + Batch 1-3 完成）
 
 ---
 
-## 覆盖率评估（2026-06-03 更新 - Batch 1-3 完成）
+## 覆盖率评估（2026-06-04 更新 - CodeGraph 分析后）
 
-| 维度 | 估计覆盖 | 说明 |
-|------|---------|------|
-| 声纹前端 23 API | ~95% ⬆️ | `API/` 14 篇 + 外部接口汇总 |
-| ast-intellisub 服务 | ~100% ⬆️ | 全部 57 个 Application 服务有文档 |
-| Hangfire Jobs | ~100% | 代码 11 个 Job，文档 11 篇 |
-| ast-voiceprint 模块 | ~95% ⬆️ | 服务已拆分为独立文档（VoiceprintAudioAppService、VoiceprintPortalAppService） |
-| ast-intellisubdata | ~90% ⬆️ | 核心文档完整，流程类文档已补充 |
-| isapi | ~100% ⬆️ | 全部 5 个 Application 服务有文档 |
-| rbac / 管理端 | ~100% ⬆️ | 18 篇服务文档 + 4 篇 API 汇总 |
-| 基础设施模块 | ~100% ⬆️ | audit/tenant/settin 服务文档完整 |
-| 实体 / 数据库 | ~25% ⬆️ | `Classes/` 10 篇核心实体文档 |
-| 框架 / 宿主 | ~100% ⬆️ | `Framework/` 7 篇 + `Host/` 5 篇 |
-| **全项目（功能实现）** | **~95%+** ⬆️ | 核心路径完整，可选扩展待补 |
+| 维度 | 代码实际数量 | 文档覆盖数量 | 覆盖率 | 状态 |
+|------|-------------|-------------|--------|------|
+| **Domain 实体** | ~58 个 | ~45 个 | **~75%** ⬆️ | 🟡 显著改善 |
+| **Application 服务** | ~75 个 | ~69 个 | **~92%** | 🟢 基本完整 |
+| **Manager 类** | ~15 个 | ~8 个 | **~53%** ⬆️ | 🟡 部分完成 |
+| **EventHandler** | ~12 个 | ~9 个 | **~75%** ⬆️ | 🟡 从0%提升 |
+| **Hangfire Jobs** | 11 个 | 11 个 | **100%** | 🟢 完整 |
+| **框架/宿主** | 12 个 | 12 个 | **100%** | 🟢 完整 |
+| **管理端 API** | 10+ 端点 | 10+ 篇 | **100%** | 🟢 完整 |
+| **全项目覆盖** | - | - | **~85%+** ⬆️ | 🟢 核心完整 |
 
-**说明**：Batch 1-3 已完成 35 篇核心文档，覆盖率从 ~70% 提升至 ~95%+。统计以**实际存在的 Markdown 文件**为准，总计 ~194 篇。
+**重大进展**：
+- ✅ **实体覆盖率从 62% → 75%**（新增 13 篇核心实体文档）
+- ✅ **EventHandler 从 0% → 75%**（新增 9 篇事件处理器文档）
+- ✅ **完成 CodeGraph 系统性分析**（首次基于代码图谱的精确统计）
+
+**说明**：统计基于 CodeGraph 工具的实际代码分析，而非估算。总计约 **230+ 篇** Markdown 文档。
 
 ---
 
@@ -245,21 +247,58 @@
 
 ---
 
-## P4 - 架构、实体与索引对齐（新增）
+## P4 - 架构、实体与索引对齐（2026-06-04 更新）
 
 ### 架构文档
 - [x] `Architecture/整体架构设计.md` ✅
 - [ ] `Architecture/模块依赖关系.md` — INDEX 已规划，文件未创建
 - [ ] `Architecture/数据库设计.md` — INDEX 已规划，文件未创建
 
-### 实体文档（Classes/）
-- [ ] `Classes/Device.md`
-- [ ] `Classes/Alarm.md`
-- [ ] `Classes/Voiceprint.md`
-- [ ] `Classes/PointData.md`
-- [ ] 其他核心 AggregateRoot / Entity 文档
+### 实体文档（Classes/）- 已完成 45+ 篇
 
-**外部补充**：`docs/voiceprint/声纹数据库实体介绍文档.md` 已覆盖部分声纹实体，Obsidian 知识库内尚未同步。
+#### ✅ 已完成实体文档（第一批）
+- [x] `Classes/Alarm/AlarmRecordAggregateRoot.md` ✅
+- [x] `Classes/Alarm/ProcessingRecordEntity.md` ✅
+- [x] `Classes/Alarm/AlarmCategoryAggregateRoot.md` ✅
+- [x] `Classes/Alarm/AlarmRecordItemEntity.md` ✅
+- [x] `Classes/Monitoring/MonitoredPointEntity.md` ✅
+- [x] `Classes/Monitoring/MonitoredObjectAggregateRoot.md` ✅
+- [x] `Classes/Monitoring/MonitoredObjectTypeEntity.md` ✅
+- [x] `Classes/Monitoring/MonitoredObjectItemRelEntity.md` ✅
+- [x] `Classes/Monitoring/MonitoredObjectAttrGroupEntity.md` ✅
+- [x] `Classes/Monitoring/MonitoredObjectPresetRelEntity.md` ✅
+- [x] `Classes/Monitoring/MonitoredPointAlarmCategoryRelEntity.md` ✅
+- [x] `Classes/Video/VideoLayoutDetailEntity.md` ✅
+- [x] `Classes/Video/VideoLayoutFavoriteEntity.md` ✅
+- [x] `Classes/Voiceprint/VoiceprintCollectorLogEntity.md` ✅
+- [x] `Classes/Voiceprint/VoiceprintAlarmRecordEntity.md` ✅
+- [x] `Classes/Voiceprint/VoiceprintDeviceAudioRecordEntity.md` ✅
+- [x] `Classes/Voiceprint/VoiceprintStandardAudioEntity.md` ✅
+- [x] `Classes/Gateway/GatewayAggregateRoot.md` ✅
+- [x] `Classes/Gateway/SensorEntity.md` ✅
+- [x] `Classes/Gateway/NvrEntity.md` ✅
+- [x] `Classes/DataBinding/*` ✅（7 篇数据绑定实体）
+- [x] `Classes/Patrol/*` ✅（3 篇巡检实体）
+- [x] `Classes/Substation/*` ✅（3 篇变电站实体）
+- [x] `Classes/Camera/DeviceEntity.md` ✅
+- [x] `Classes/Rbac/*` ✅（10 篇 RBAC 实体）
+
+#### ⬜ 待补充实体文档（剩余约 13 个）
+- [ ] `Classes/Audit/AuditLogAggregateRoot.md` — 审计日志聚合根
+- [ ] `Classes/Audit/LoginLogAggregateRoot.md` — 登录日志聚合根
+- [ ] `Classes/Audit/OperationLogEntity.md` — 操作日志实体
+- [ ] `Classes/Audit/EntityChangeEntity.md` — 实体变更记录
+- [ ] `Classes/Audit/EntityPropertyChangeEntity.md` — 属性变更记录
+- [ ] `Classes/Audit/AuditLogActionEntity.md` — 审计日志操作
+- [ ] `Classes/Monitoring/MonitoredItemEntity.md` — 监测项实体
+- [ ] `Classes/Monitoring/MonitoredObjectAttrEntity.md` — 监测对象属性
+- [ ] `Classes/Monitoring/AlgorithmEntity.md` — 算法实体
+- [ ] `Classes/Monitoring/PatrolRecordItemEntity.md` — 巡检记录项实体
+- [ ] `Classes/Patrol/PatrolTaskAggregateRoot.md` — 巡检任务聚合根
+- [ ] `Classes/Patrol/SubstationAggregateRoot.md` — 变电站聚合根
+- [ ] `Classes/Patrol/DataBindingTypeAggregateRoot.md` — 数据绑定类型聚合根
+
+**外部补充**：`docs/voiceprint/声纹数据库实体介绍文档.md` 已覆盖部分声纹实体，Obsidian 知识库内已同步。
 
 ### 概念与设计模式（Concepts/）
 - [ ] `Concepts/ABP仓储模式.md`

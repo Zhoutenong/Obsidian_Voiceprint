@@ -20,7 +20,21 @@
 
 ---
 
-## 快速导航
+## 📊 文档覆盖率（2026-06-04 更新）
+
+| 维度 | 估计覆盖 | 说明 |
+|------|---------|------|
+| **Domain 实体** | ~75% ⬆️ | 45+ 篇实体文档（从62%提升） |
+| **Application 服务** | ~92% | 69+ 篇服务文档 |
+| **Hangfire Jobs** | 100% | 11 个 Job 全部文档化 |
+| **EventHandler** | ~60% ⬆️ | 9 篇事件处理器文档（从0%提升） |
+| **框架/宿主** | 100% | 12 篇框架组件文档 |
+| **管理端 API** | 100% | 4 篇管理端 API 汇总 |
+| **全项目覆盖** | ~85%+ ⬆️ | 核心功能完整，可选扩展待补 |
+
+> **详细补齐计划**：参见 [[文档补齐计划2026.md]]
+
+---
 
 ### 📋 学习路线
 
@@ -47,11 +61,61 @@
 ## 目录结构
 
 ```
-Classes/            核心实体文档
-  ├─ Device.md      ✅ 设备实体
-  ├─ Alarm.md       ✅ 告警实体
-  ├─ Voiceprint.md  ✅ 声纹实体
-  └─ PointData.md   ✅ 点位数据实体
+Classes/            核心实体文档（45+ 篇，覆盖率 ~75%）
+  ├─ Alarm/         告警实体
+  │   ├─ AlarmRecordAggregateRoot.md      ✅ 告警记录聚合根
+  │   ├─ ProcessingRecordEntity.md        ✅ 告警处理记录
+  │   ├─ AlarmCategoryAggregateRoot.md   ✅ 告警分类聚合根
+  │   └─ AlarmRecordItemEntity.md        ✅ 告警记录项
+  ├─ Monitoring/    监测实体
+  │   ├─ MonitoredPointEntity.md         ✅ 监测点位
+  │   ├─ MonitoredObjectAggregateRoot.md  ✅ 监测对象聚合根
+  │   ├─ MonitoredObjectTypeEntity.md    ✅ 监测对象类型
+  │   ├─ MonitoredObjectItemRelEntity.md ✅ 对象-监测项关联
+  │   ├─ MonitoredObjectAttrGroupEntity.md ✅ 属性分组
+  │   ├─ MonitoredObjectPresetRelEntity.md ✅ 对象-预置位关联
+  │   └─ MonitoredPointAlarmCategoryRelEntity.md ✅ 点位-告警分类关联
+  ├─ Gateway/       网关实体
+  │   ├─ GatewayAggregateRoot.md         ✅ 网关聚合根
+  │   ├─ SensorEntity.md                 ✅ 传感器实体
+  │   └─ NvrEntity.md                    ✅ NVR实体
+  ├─ DataBinding/   数据绑定实体
+  │   ├─ DataBindingItemEntity.md        ✅ 绑定项实体
+  │   ├─ DataStrategyEntity.md           ✅ 数据策略
+  │   ├─ StrategyStateEntity.md          ✅ 策略状态
+  │   ├─ DisplayComponentEntity.md       ✅ 展示组件
+  │   ├─ BindingItemStrategyRelEntity.md ✅ 绑定项-策略关联
+  │   └─ PointBindingRelEntity.md        ✅ 点位绑定关联
+  ├─ Patrol/        巡检实体
+  │   ├─ PatrolTaskEntity.md            ✅ 巡检任务
+  │   ├─ PatrolRecordEntity.md          ✅ 巡检记录
+  │   └─ PatrolTaskMonitoredPointRelEntity.md ✅ 任务-点位关联
+  ├─ Video/         视频实体
+  │   ├─ VideoLayoutDetailEntity.md     ✅ 视频布局详情
+  │   └─ VideoLayoutFavoriteEntity.md    ✅ 视频布局收藏
+  ├─ Voiceprint/    声纹实体
+  │   ├─ VoiceprintAlarmRecordEntity.md  ✅ 声纹告警记录
+  │   ├─ VoiceprintDeviceAudioRecordEntity.md ✅ 设备音频记录
+  │   ├─ VoiceprintStandardAudioEntity.md ✅ 标准音频
+  │   └─ VoiceprintCollectorLogEntity.md ✅ 采集通信日志
+  ├─ Substation/    变电站实体
+  │   ├─ SubstationAggregateRoot.md      ✅ 变电站聚合根
+  │   ├─ SubstationTypeEntity.md         ✅ 变电站类型
+  │   └─ SubstationUserEntity.md         ✅ 变电站用户
+  ├─ Camera/        摄像机实体
+  │   └─ DeviceEntity.md                 ✅ 设备实体
+  └─ Rbac/          RBAC实体
+      ├─ UserEntity.md                   ✅ 用户实体
+      ├─ RoleEntity.md                   ✅ 角色实体
+      ├─ MenuEntity.md                   ✅ 菜单实体
+      ├─ DeptEntity.md                   ✅ 部门实体
+      ├─ PostEntity.md                   ✅ 岗位实体
+      ├─ DictionaryTypeEntity.md         ✅ 字典类型
+      ├─ DictionaryDataEntity.md         ✅ 字典数据
+      ├─ UserRoleEntity.md               ✅ 用户-角色关联
+      ├─ UserPostEntity.md               ✅ 用户-岗位关联
+      ├─ RoleMenuEntity.md               ✅ 角色-菜单关联
+      └─ RoleDeptEntity.md               ✅ 角色-部门关联
 Modules/            模块文档（按业务模块组织）
   ├─ rbac/          认证授权模块
   │   ├─ 认证系统.md        ✅
@@ -184,7 +248,16 @@ Pipelines/          数据流程文档
   ├─ DataReport/    数据上报流程
   │   └─ IEC61850上报管道.md              ✅
   └─ Events/        事件驱动
-      └─ EventDrivenPipeline.md          ✅
+      ├─ EventDrivenPipeline.md          ✅
+      └─ Handlers/     事件处理器
+          ├─ EventHandlerOverview.md    ✅ 事件处理器总览
+          ├─ AlarmProcessingEventHandler.md ✅ 告警处理事件
+          ├─ AlarmRecordItemCreatedHandler.md ✅ 告警记录创建事件
+          ├─ PointValueEventHandler.md    ✅ 点位值事件
+          ├─ ProcessedPointValueEventHandler.md ✅ 处理后点位值事件
+          ├─ NormalDataProcessedHandler.md ✅ 正常数据处理事件
+          ├─ PatrolEventHandler.md       ✅ 巡检事件
+          └─ Iec61850DataReportHandler.md ✅ IEC61850数据上报事件
 Hangfire/           后台任务文档
   ├─ Voiceprint/    声纹相关 Jobs
   │   └─ VoiceprintCaptureJob.md          ✅
