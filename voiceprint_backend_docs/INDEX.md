@@ -231,7 +231,8 @@ Managers/          领域管理器文档（Domain Manager层）
   │   ├─ AccountManager.md              ✅ 账户管理器（JWT令牌、认证）
   │   ├─ UserManager.md                  ✅ 用户管理器（创建、角色分配）
   │   ├─ RoleManager.md                  ✅ 角色管理器（菜单分配）
-  │   └─ FileManager.md                  ✅ 文件管理器（上传、缩略图）
+  │   ├─ FileManager.md                  ✅ 文件管理器（上传、缩略图）
+  │   └─ TencentCloudManager.md           ✅ 腾讯云服务管理器（短信）
   └─ ast-intellisub/ 变电站监控管理器
       ├─ AlarmConditionEvaluationManager.md ✅ 告警条件评估管理器
       ├─ Iec61850MappingManager.md       ✅ IEC61850映射管理器
