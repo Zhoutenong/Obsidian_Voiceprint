@@ -230,11 +230,14 @@ Managers/          领域管理器文档（Domain Manager层）
   ├─ rbac/          RBAC管理器
   │   ├─ AccountManager.md              ✅ 账户管理器（JWT令牌、认证）
   │   ├─ UserManager.md                  ✅ 用户管理器（创建、角色分配）
-  │   └─ RoleManager.md                  ✅ 角色管理器（菜单分配）
+  │   ├─ RoleManager.md                  ✅ 角色管理器（菜单分配）
+  │   └─ FileManager.md                  ✅ 文件管理器（上传、缩略图）
   └─ ast-intellisub/ 变电站监控管理器
       ├─ AlarmConditionEvaluationManager.md ✅ 告警条件评估管理器
       ├─ Iec61850MappingManager.md       ✅ IEC61850映射管理器
       └─ StreamingUrlManager.md          ✅ 流媒体URL管理器
+  └─ SettingManagement/ 系统设置管理器
+      └─ SettingManager.md               ✅ 设置管理器（继承、加密）
 API/                API 接口文档
   ├─ Account/        账户 API
   │   └─ AccountAPI.md                   ✅
