@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "voiceprint_backend_docs/API/Dashboard/DashboardAPI.md",
+                "file": "voiceprint_backend_docs/Classes/Alarm/AlarmCategoryAggregateRoot.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DashboardAPI"
+              "title": "AlarmCategoryAggregateRoot"
             }
           }
         ]
@@ -197,6 +197,19 @@
   },
   "active": "9a42cc9cabe94f57",
   "lastOpenFiles": [
+    "voiceprint_backend_docs/Managers/rbac/TencentCloudManager.md",
+    "voiceprint_backend_docs/Pipelines/Events/Handlers/PatrolResultUpdateHandler.md",
+    "voiceprint_backend_docs/Pipelines/Events/Handlers/AlarmProcessingService.md",
+    "voiceprint_backend_docs/Architecture/模块依赖关系.md",
+    "voiceprint_backend_docs/Architecture/数据库设计.md",
+    "voiceprint_backend_docs/Architecture/整体架构设计.md",
+    "voiceprint_backend_docs/INDEX.md",
+    "voiceprint_backend_docs/Managers/SettingManagement/SettingManager.md",
+    "voiceprint_backend_docs/Managers/SettingManagement",
+    "voiceprint_backend_docs/Managers/rbac/FileManager.md",
+    "voiceprint_backend_docs/DocumentationPlan.md.tmp.35124.db2f6355bc97",
+    "voiceprint_backend_docs/Classes/Gateway/AstPointEntity.md",
+    "voiceprint_backend_docs/API/Dashboard/DashboardAPI.md",
     "voiceprint_backend_docs/DocumentationPlan.md.tmp.10772.d8ace069ecef",
     "voiceprint_backend_docs/DocumentationPlan.md.tmp.10772.6d859300b3bd",
     "voiceprint_backend_docs/待补文档清单.md.tmp.10772.058683526e56",
@@ -217,21 +230,8 @@
     "voiceprint_backend_docs/Classes/Voiceprint/VoiceprintDeviceAudioRecordEntity.md.tmp.10772.4cd80a78a23e",
     "Modules/rbac/Managers/RoleManager.md",
     "voiceprint_backend_docs/Modules/ast-voiceprint/README.md.tmp.10772.79ed102deeb9",
-    "voiceprint_backend_docs/Classes/Patrol",
-    "voiceprint_backend_docs/Classes/Monitoring",
-    "voiceprint_backend_docs/Classes/Voiceprint",
     "voiceprint_backend_docs/Host/部署模式.md",
     "Modules/rbac/Managers/UserManager.md",
-    "voiceprint_backend_docs/API/Admin/UserRoleMenuAPI.md",
-    "voiceprint_backend_docs/Framework/BackgroundWorkersHangfire.md",
-    "Modules/ast-intellisub/Managers/IcdFileParser.md",
-    "voiceprint_backend_docs/Modules/ast-voiceprint/VoiceprintPortalAppService.md",
-    "voiceprint_backend_docs/Modules/audit-logging/审计日志查询指南.md",
-    "voiceprint_backend_docs/Framework/Mapster.md",
-    "voiceprint_backend_docs/Host/Program启动流程.md",
-    "Modules/ast-intellisub/Managers/MqttGatewayClient.md",
-    "voiceprint_backend_docs/Framework/AuthenticationOAuth.md",
-    "Modules/ast-intellisub/Managers/StreamingUrlManager.md",
-    "voiceprint_backend_docs/Framework/SqlSugarCore.md"
+    "voiceprint_backend_docs/API/Admin/UserRoleMenuAPI.md"
   ]
 }
