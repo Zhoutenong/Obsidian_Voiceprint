@@ -12,19 +12,19 @@
 
 | 序号 | 流程图文件 | 涉及的 API | 描述 |
 |------|-----------|-----------|------|
-| 1 | [account-login.html](../../../data-flow-diagrams/account-login.html) | `/account/login` | 用户登录流程 |
-| 2 | [account-get-info.html](../../../data-flow-diagrams/account-get-info.html) | `/account` | 获取账户信息流程 |
-| 3 | [voiceprint-dashboard.html](../../../data-flow-diagrams/voiceprint-dashboard.html) | 仪表板相关 8 个 API | 首页仪表板数据加载流程 |
-| 4 | [voiceprint-assets.html](../../../data-flow-diagrams/voiceprint-assets.html) | 设备台账相关 6 个 API | 设备台账查询和操作流程 |
-| 5 | [voiceprint-alarms.html](../../../data-flow-diagrams/voiceprint-alarms.html) | 告警管理相关 4 个 API | 告警记录查询和处理流程 |
-| 6 | [voiceprint-analysis.html](../../../data-flow-diagrams/voiceprint-analysis.html) | 声纹分析相关 3 个 API | 声纹分析和报告生成流程 |
+| 1 | [account-login.html](../../data-flow-diagrams/account-login.html) | `/account/login` | 用户登录流程 |
+| 2 | [account-get-info.html](../../data-flow-diagrams/account-get-info.html) | `/account` | 获取账户信息流程 |
+| 3 | [voiceprint-dashboard.html](../../data-flow-diagrams/voiceprint-dashboard.html) | 仪表板相关 8 个 API | 首页仪表板数据加载流程 |
+| 4 | [voiceprint-assets.html](../../data-flow-diagrams/voiceprint-assets.html) | 设备台账相关 6 个 API | 设备台账查询和操作流程 |
+| 5 | [voiceprint-alarms.html](../../data-flow-diagrams/voiceprint-alarms.html) | 告警管理相关 4 个 API | 告警记录查询和处理流程 |
+| 6 | [voiceprint-analysis.html](../../data-flow-diagrams/voiceprint-analysis.html) | 声纹分析相关 3 个 API | 声纹分析和报告生成流程 |
 
 **访问方式**:
 - 本地访问：在浏览器中打开对应的 HTML 文件
 - 包含完整的交互式流程图，支持节点点击和路径高亮
 
 **相关文档**:
-- [前端 23 个接口文档](../../../frontend-api-interfaces.md) - 所有接口的详细说明
+- [前端 23 个接口文档](../../frontend-api-interfaces.md) - 所有接口的详细说明
 
 ---
 
@@ -36,16 +36,16 @@
 
 | 序号 | 文档名称 | 描述 | 相关模块 |
 |------|---------|------|---------|
-| 1 | [00-系统架构与功能实现](../../../voiceprint/00-系统架构与功能实现.md) | 系统整体架构和核心功能实现说明 | 全局 |
-| 2 | [01-intelli-substation-voiceprint-backend改造方案](../../../voiceprint/01-intelli-substation-voiceprint-backend改造方案.md) | 后端系统改造方案和迁移计划 | ABP框架 |
-| 3 | [02-python-voiceprint-service方案](../../../voiceprint/02-python-voiceprint-service方案.md) | Python 声纹分析服务设计方案 | 声纹分析 |
-| 4 | [03-raspberry-pi-agent方案](../../../voiceprint/03-raspberry-pi-agent方案.md) | 树莓派边缘采集代理方案 | 边缘计算 |
-| 5 | [分析报表需求文档](../../../voiceprint/分析报表需求文档.md) | 声纹分析报表的功能需求和设计 | 报表系统 |
-| 6 | [声纹数据库实体介绍文档](../../../voiceprint/声纹数据库实体介绍文档.md) | 声纹相关数据库实体和关系说明 | 数据模型 |
-| 7 | [多设备高频采集下音频时长不足原因分析](../../../voiceprint/多设备高频采集下音频时长不足原因分析.md) | 音频采集时长问题的技术分析 | 音频采集 |
-| 8 | [已处理音频下载接口优化方案](../../../voiceprint/已处理音频下载接口优化方案.md) | 批量下载接口的优化方案 | API优化 |
-| 9 | [已处理音频定期清理功能代码解释](../../../voiceprint/已处理音频定期清理功能代码解释.md) | 音频清理后台任务的实现说明 | Hangfire |
-| 10 | [需求变更-算法切换与1分钟分段识别](../../../voiceprint/需求变更-算法切换与1分钟分段识别.md) | 算法模式切换和分段识别的变更说明 | 声纹算法 |
+| 1 | [00-系统架构与功能实现](../../voiceprint/00-系统架构与功能实现.md) | 系统整体架构和核心功能实现说明 | 全局 |
+| 2 | [01-intelli-substation-voiceprint-backend改造方案](../../voiceprint/01-intelli-substation-voiceprint-backend改造方案.md) | 后端系统改造方案和迁移计划 | ABP框架 |
+| 3 | [02-python-voiceprint-service方案](../../voiceprint/02-python-voiceprint-service方案.md) | Python 声纹分析服务设计方案 | 声纹分析 |
+| 4 | [03-raspberry-pi-agent方案](../../voiceprint/03-raspberry-pi-agent方案.md) | 树莓派边缘采集代理方案 | 边缘计算 |
+| 5 | [分析报表需求文档](../../voiceprint/分析报表需求文档.md) | 声纹分析报表的功能需求和设计 | 报表系统 |
+| 6 | [声纹数据库实体介绍文档](../../voiceprint/声纹数据库实体介绍文档.md) | 声纹相关数据库实体和关系说明 | 数据模型 |
+| 7 | [多设备高频采集下音频时长不足原因分析](../../voiceprint/多设备高频采集下音频时长不足原因分析.md) | 音频采集时长问题的技术分析 | 音频采集 |
+| 8 | [已处理音频下载接口优化方案](../../voiceprint/已处理音频下载接口优化方案.md) | 批量下载接口的优化方案 | API优化 |
+| 9 | [已处理音频定期清理功能代码解释](../../voiceprint/已处理音频定期清理功能代码解释.md) | 音频清理后台任务的实现说明 | Hangfire |
+| 10 | [需求变更-算法切换与1分钟分段识别](../../voiceprint/需求变更-算法切换与1分钟分段识别.md) | 算法模式切换和分段识别的变更说明 | 声纹算法 |
 
 **访问方式**:
 - 本地访问：直接在 Obsidian 或 Markdown 编辑器中打开
@@ -79,7 +79,7 @@
 | 声纹分析 | 3 | 标准音频库、测试音频、报告生成 |
 
 **访问方式**:
-- [查看完整文档](../../../frontend-api-interfaces.md)
+- [查看完整文档](../../frontend-api-interfaces.md)
 
 **相关文档**:
 - [前端 API 流程图](#前端-api-流程图) - 可视化展示接口调用流程
@@ -115,9 +115,9 @@
 
 ```markdown
 参见外部实现方案：
-- [系统架构说明](../../../voiceprint/00-系统架构与功能实现.md)
-- [Python 声纹服务方案](../../../voiceprint/02-python-voiceprint-service方案.md)
-- [前端接口文档](../../../frontend-api-interfaces.md)
+- [系统架构说明](../../voiceprint/00-系统架构与功能实现.md)
+- [Python 声纹服务方案](../../voiceprint/02-python-voiceprint-service方案.md)
+- [前端接口文档](../../frontend-api-interfaces.md)
 ```
 
 ### 文档更新策略
@@ -144,24 +144,24 @@
 ### 按主题查找
 
 **系统架构和设计**:
-- [系统架构与功能实现](../../../voiceprint/00-系统架构与功能实现.md)
-- [后端改造方案](../../../voiceprint/01-intelli-substation-voiceprint-backend改造方案.md)
+- [系统架构与功能实现](../../voiceprint/00-系统架构与功能实现.md)
+- [后端改造方案](../../voiceprint/01-intelli-substation-voiceprint-backend改造方案.md)
 - Obsidian: [整体架构设计](../Architecture/整体架构设计.md)
 
 **前端集成**:
-- [前端 23 个接口文档](../../../frontend-api-interfaces.md)
-- [前端 API 流程图](../../../data-flow-diagrams/)
+- [前端 23 个接口文档](../../frontend-api-interfaces.md)
+- [前端 API 流程图](../../data-flow-diagrams/)
 - Obsidian: [项目文档首页](../README.md)
 
 **声纹分析**:
-- [Python 声纹服务方案](../../../voiceprint/02-python-voiceprint-service方案.md)
-- [分析报表需求文档](../../../voiceprint/分析报表需求文档.md)
-- [声纹数据库实体介绍](../../../voiceprint/声纹数据库实体介绍文档.md)
+- [Python 声纹服务方案](../../voiceprint/02-python-voiceprint-service方案.md)
+- [分析报表需求文档](../../voiceprint/分析报表需求文档.md)
+- [声纹数据库实体介绍](../../voiceprint/声纹数据库实体介绍文档.md)
 - Obsidian: [声纹分析模块](../Modules/声纹分析模块.md)
 
 **问题分析**:
-- [音频时长不足原因分析](../../../voiceprint/多设备高频采集下音频时长不足原因分析.md)
-- [下载接口优化方案](../../../voiceprint/已处理音频下载接口优化方案.md)
+- [音频时长不足原因分析](../../voiceprint/多设备高频采集下音频时长不足原因分析.md)
+- [下载接口优化方案](../../voiceprint/已处理音频下载接口优化方案.md)
 - Obsidian: [常见问题](../Troubleshooting/常见问题.md)
 
 ---
@@ -186,8 +186,8 @@
 
 ## 📚 相关资源
 
-- [项目 README](../../../README.md)
-- [CLAUDE.md](../../../CLAUDE.md) - 项目开发指南
+- [项目 README](../../README.md)
+- [CLAUDE.md](../../CLAUDE.md) - 项目开发指南
 - [Obsidian 知识库首页](../README.md)
 - [Resources 目录说明](README.md) - 本地资源文件管理
 

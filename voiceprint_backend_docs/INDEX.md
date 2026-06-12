@@ -32,7 +32,7 @@
 | **管理端 API** | 100% | 4 篇管理端 API 汇总 |
 | **全项目覆盖** | ~85%+ ⬆️ | 核心功能完整，可选扩展待补 |
 
-> **详细补齐计划**：参见 [[文档补齐计划2026.md]]
+> **详细补齐计划**：参见 [[文档补齐计划2026]]
 
 ---
 
@@ -126,7 +126,7 @@ Modules/            模块文档（按业务模块组织）
   │   └─ RbacOverview.md    ✅
   ├─ ast-intellisub/ 变电站监控模块
   │   ├─ 变电站监视范围概览.md  ✅ 模块/数据流/监视内容总览
-  │   ├─ 设备管理服务.md         ✅
+  │   ├─ DeviceService.md         ✅
   │   ├─ 设备告警流程.md         ✅
   │   ├─ Patrol/      巡检系统
   │   │   ├─ PatrolTaskService.md           ✅
@@ -332,11 +332,9 @@ Configuration/      配置文档
 Resources/          外部资源索引
   └─ ExternalDocsIndex.md                ✅
     链接到外部实现方案：
-    - [[../../../voiceprint/00-系统架构与功能实现.md|系统架构实现]]
-    - [[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹服务]]
-    - [[../../../voiceprint/03-raspberry-pi-agent方案.md|树莓派边缘采集]]
-    - [[../../../data-flow-diagrams/|前端 API 时序图（6 个 HTML）]]
-    - [[../../../frontend-api-interfaces.md|前端 23 个接口]]
+    - [[../../voiceprint/00-系统架构与功能实现|系统架构实现]]
+    - [[../../voiceprint/02-python-voiceprint-service方案|Python 声纹服务]]
+    - [[../../voiceprint/03-raspberry-pi-agent方案|树莓派边缘采集]]
 Templates/          笔记模板
   ├─ 组件笔记模板.md                     ✅
   ├─ 流程文档模板.md                     ✅
@@ -442,7 +440,7 @@ INDEX.md            本文件（知识图谱索引）✅
 [[Modules/ast-intellisub/变电站监视范围概览]] — 主要模块、数据驱动方式、监视对象与物理量 ✅
 
 #### 设备管理
-[[Modules/ast-intellisub/设备管理服务]] · [[Classes/Device]] ✅
+[[Modules/ast-intellisub/DeviceService]] · [[Classes/Device]] ✅
 
 #### 巡检系统
 [[Modules/ast-intellisub/Patrol/PatrolTaskService]] · [[Modules/ast-intellisub/Patrol/PatrolExecutionService]] · [[Modules/ast-intellisub/Patrol/PatrolRecordService]] · [[Modules/ast-intellisub/Patrol/PatrolSystemRecoveryService]] ⬜
@@ -592,7 +590,7 @@ SORT file.name ASC
 ## 学习资源
 
 - [[DocumentationPlan]] — 文档补充计划 ✅
-- [[待补文档清单]] — 待补文档清单与建议目录结构 ✅
+- [[DocumentationPlan]] — 文档补充计划与建议目录结构 ✅
 - [[快速导航]] — 快速导航索引 ✅
 - [[Diagrams/图表索引]] — 流程图索引 ✅
 

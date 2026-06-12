@@ -258,7 +258,7 @@ public class MonitoredObjectAttrGetListInputDto : PagedAndSortedResultRequestDto
 
 - [[MonitoredObjectAttrGroupService]] - 属性分组服务
 - [[MonitoredObjectService]] - 监测对象服务
-- [[设备管理服务]] - 设备管理相关文档
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理相关文档
 - [[设备属性配置流程]] - 设备属性配置和使用流程
 
 ---

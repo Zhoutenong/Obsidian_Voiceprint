@@ -9,7 +9,7 @@
 | 属性 | 值 |
 |------|-----|
 | **HTTP 方法** | `POST` |
-| **路由路径** | `/api/app/voiceprint-audio/upload` |
+| **路由路径** | `/api/app/voiceprint/upload` |
 | **Content-Type** | `multipart/form-data` |
 | **认证方式** | `AllowAnonymous` + `X-Api-Key` 请求头 |
 | **大小限制** | 100 MB |
@@ -79,7 +79,7 @@ public class VoiceprintAudioUploadInput
 ### 请求示例（multipart/form-data）
 
 ```http
-POST /api/app/voiceprint-audio/upload HTTP/1.1
+POST /api/app/voiceprint/upload HTTP/1.1
 Host: api.example.com
 X-Api-Key: your-secret-key
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -377,7 +377,7 @@ private static string GetSafeFileName(VoiceprintAudioUploadInput input)
 ### Curl 示例
 
 ```bash
-curl -X POST "http://your-server/api/app/voiceprint-audio/upload" \
+curl -X POST "http://your-server/api/app/voiceprint/upload" \
   -H "X-Api-Key: your-secret-api-key" \
   -F "file=@/tmp/audio_001.wav" \
   -F "GroupId=a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11" \
@@ -409,7 +409,7 @@ using var client = new HttpClient();
 client.DefaultRequestHeaders.Add("X-Api-Key", "your-secret-api-key");
 
 var response = await client.PostAsync(
-    "http://your-server/api/app/voiceprint-audio/upload",
+    "http://your-server/api/app/voiceprint/upload",
     multipartContent);
 
 var result = await response.Content.ReadAsStringAsync();
@@ -422,7 +422,7 @@ Console.WriteLine(result);
 import requests
 from datetime import datetime
 
-url = "http://your-server/api/app/voiceprint-audio/upload"
+url = "http://your-server/api/app/voiceprint/upload"
 headers = {"X-Api-Key": "your-secret-api-key"}
 
 files = {"file": open("audio_001.wav", "rb")}
@@ -469,7 +469,7 @@ print(response.json())
 
 | 接口 | 路由 | 功能 | 关系 |
 |------|------|------|------|
-| **本接口** | `POST /api/app/voiceprint-audio/upload` | 上传原始音频 | 📥 **入口** |
+| **本接口** | `POST /api/app/voiceprint/upload` | 上传原始音频 | 📥 **入口** |
 | [[./VoiceprintResultUploadAPI]] | `POST /api/app/voiceprint/result` | 上传识别结果 | ⬇️ 下游 |
 | [[./VoiceprintReportGenerateAPI]] | `POST /api/app/voiceprint/reports/generate-from-audio` | 生成分析报告 | ⬇️ 下游 |
 | [[../后台任务/VoiceprintProcessedCleanupJob]] | (后台任务) | 清理旧文件 | 🗑️ 清理 |

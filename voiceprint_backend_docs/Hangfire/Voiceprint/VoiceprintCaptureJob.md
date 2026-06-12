@@ -31,13 +31,14 @@ tags: [hangfire, job, voiceprint, mqtt]
   },
   "VoiceprintCaptureJob": {
     "Enabled": true,
-    "CronExpression": "0 */10 * * * *",
+    "CronExpression": "0 */5 * * * *",
     "DurationSeconds": 10,
     "ManualCaptureTimeoutMinutes": 10,
     "Agents": [
       {
         "GatewayId": "guid",
-        "DeviceId": "guid"
+        "DeviceIds": ["pi-01", "pi-02"],
+        "RetryLimit": 3
       }
     ]
   }
@@ -52,6 +53,9 @@ tags: [hangfire, job, voiceprint, mqtt]
 | `CronExpression` | string | "0 */5 * * * *" | Cron表达式 |
 | `DurationSeconds` | int | 10 | 录音时长（秒），范围1-300 |
 | `Agents` | List | [] | 待下发的采集终端列表 |
+| `Agents[].GatewayId` | Guid | - | 网关ID（MQTT下发用） |
+| `Agents[].DeviceIds` | List&lt;string&gt; | [] | 需要执行采集的设备编号列表 |
+| `Agents[].RetryLimit` | int | 3 | 终端重试上限（用于命令 payload） |
 | `ManualCaptureTimeoutMinutes` | int | 10 | 手动采集超时时间（分钟） |
 
 ---
@@ -120,35 +124,30 @@ public class VoiceprintCaptureJob : HangfireBackgroundWorkerBase, ITransientDepe
 
     public override async Task DoWorkAsync(CancellationToken cancellationToken = default)
     {
-        // 1. 检查并恢复超时的手动采集
         if (_runtimeState.TryRecoverTimeout(out var recoveredGroupId, out var timeoutReason))
         {
             Logger.LogWarning("Voiceprint 手动采集超时，自动恢复定时任务: groupId={GroupId}, reason={Reason}", recoveredGroupId, timeoutReason);
             await TrySwitchAnalysisToOriginalAsync($"job-timeout-recover:{recoveredGroupId}");
         }
 
-        // 2. 检查手动采集状态
         if (_runtimeState.IsManualCaptureRunning)
         {
             Logger.LogInformation("VoiceprintCaptureJob 跳过本轮执行：手动采集批次运行中，groupId={GroupId}", _runtimeState.CurrentGroupId);
             return;
         }
 
-        // 3. 检查任务启用状态
         if (!_options.Enabled)
         {
             Logger.LogInformation("VoiceprintCaptureJob 已禁用，跳过执行");
             return;
         }
 
-        // 4. 检查 Agent 配置
         if (_options.Agents == null || !_options.Agents.Any())
         {
             Logger.LogWarning("VoiceprintCaptureJob 未配置 Agents，无法下发采集指令");
             return;
         }
 
-        // 5. 下发采集指令
         var groupId = _guidGenerator.Create();
         var occurredAt = DateTime.Now;
 
@@ -159,27 +158,39 @@ public class VoiceprintCaptureJob : HangfireBackgroundWorkerBase, ITransientDepe
         {
             if (agent.GatewayId == Guid.Empty)
             {
-                Logger.LogWarning("Agent GatewayId 为空，跳过该 Agent");
+                Logger.LogWarning("跳过无效 agent 配置: gatewayId={GatewayId}", agent.GatewayId);
                 continue;
             }
 
+            var payload = new JObject
+            {
+                ["groupId"] = groupId,
+                ["durationSeconds"] = _options.DurationSeconds,
+                ["dateTime"] = occurredAt.ToString("O"),
+                ["retryLimit"] = agent.RetryLimit
+            };
+            if (agent.DeviceIds != null && agent.DeviceIds.Any())
+            {
+                payload["deviceIds"] = JArray.FromObject(agent.DeviceIds);
+            }
+
+            var command = new MqCommandRequestDto
+            {
+                Type = "command",
+                Command = "voiceprint-capture",
+                MsgId = _guidGenerator.Create().ToString("N"),
+                Data = payload
+            };
+
             try
             {
-                await _mqttService.PublishVoiceprintCaptureCommandAsync(
-                    agent.GatewayId,
-                    agent.DeviceId,
-                    groupId,
-                    occurredAt,
-                    _options.DurationSeconds
-                );
-
-                Logger.LogInformation("VoiceprintCaptureJob 下发采集指令成功: gatewayId={GatewayId}, deviceId={DeviceId}, groupId={GroupId}",
-                    agent.GatewayId, agent.DeviceId, groupId);
+                await _mqttService.PublishVoiceprintCommandAsync(agent.GatewayId, command);
+                Logger.LogInformation("已向网关 {GatewayId} 下发声纹采集指令，msgId={MsgId}",
+                    agent.GatewayId, command.MsgId);
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, "VoiceprintCaptureJob 下发采集指令失败: gatewayId={GatewayId}, deviceId={DeviceId}",
-                    agent.GatewayId, agent.DeviceId);
+                Logger.LogError(ex, "向网关 {GatewayId} 下发声纹采集指令失败", agent.GatewayId);
             }
         }
     }
@@ -271,7 +282,7 @@ foreach (var agent in _options.Agents)
 {
     try
     {
-        await _mqttService.PublishVoiceprintCaptureCommandAsync(...);
+        await _mqttService.PublishVoiceprintCommandAsync(agent.GatewayId, command);
         Logger.LogInformation("下发成功");
     }
     catch (Exception ex)
@@ -367,3 +378,4 @@ Logger.LogError(ex, "下发失败: gatewayId={GatewayId}", gatewayId);
 ---
 
 **状态**：🟡 学习中
+**最后更新**: 2026-06-12

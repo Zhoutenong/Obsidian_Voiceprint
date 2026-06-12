@@ -448,7 +448,7 @@ window.URL.revokeObjectURL(url);
 
 - [[VoiceprintPortalAppService]] - 设备门户服务
 - [[MonitoredObjectService]] - 监测对象服务
-- [[设备管理服务]] - 设备管理流程
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理流程
 - [[声纹分析流程]] - 声纹分析流程
 
 ## 前端使用位置

@@ -162,10 +162,12 @@ public async Task HandleEventAsync(ProcessedPointValueEventArgs eventData)
 查询监测对象聚合根
   ↓
 更新监测对象状态 → 异常
+  ↓
+递归更新父设备状态
 ```
 
 **关键特性**:
-- **级联状态更新**: 点位 → 监测项 → 监测对象
+- **级联状态更新**: 点位 → 监测项 → 监测对象 → 父设备
 - **状态一致性**: 确保状态变更的原子性
 - **幂等性**: 支持重复处理而不产生副作用
 
@@ -222,7 +224,7 @@ public async Task HandleEventAsync(GatewayStatusChangedEventArgs eventData)
 
 **关键特性**:
 - **批量优化**: 批量查询和更新，减少数据库往返
-- **并发处理**: 使用并发字典处理多个设备
+- **顺序执行**: 顺序执行更新，保持在同一个 UOW 上下文中
 - **统计信息**: 记录处理统计（成功/失败/跳过）
 
 **处理流程**:
@@ -233,7 +235,7 @@ public async Task HandleEventAsync(GatewayStatusChangedEventArgs eventData)
   ↓
 构建设备ID映射
   ↓
-并发处理每个设备状态
+顺序处理每个设备状态
   ↓
 批量更新数据库
 ```
@@ -355,6 +357,7 @@ object simulatedValue = mapping.DataType switch
 {
     Iec61850DataType.Boolean => alarmValue > 0,
     Iec61850DataType.Int => alarmValue,
+    Iec61850DataType.Float => (float)alarmValue,
     Iec61850DataType.String => alarmMessage,
     _ => alarmValue
 };
@@ -415,6 +418,14 @@ record.OverallResult = hasFinalIssue
 - **重试机制**: 支持并发冲突重试（最多3次）
 - **指数退避**: 100ms → 200ms → 400ms
 - **状态恢复**: 将异常状态恢复为正常状态
+
+**重试方法**:
+
+| 方法 | 重试间隔 | 用途 |
+|------|---------|------|
+| `ProcessSingleContextWithRetryAsync` | 100ms | 单个处理上下文的完整重试 |
+| `UpdateMonitoredObjectItemRelStatusAsync` | 50ms | 监测项关联状态更新重试 |
+| `UpdateMonitoredObjectStatusWithRetryAsync` | 50ms | 监测对象状态更新重试 |
 
 **代码示例**:
 ```csharp
@@ -719,12 +730,12 @@ var handlers = _serviceProvider.GetServices<ILocalEventHandler<PointValueEventAr
 
 ## 相关文档
 
-- [点位数据处理流程](../DataProcessing/PointDataPipeline.md)
-- [告警处理机制](../AlarmHandling/AlarmPipeline.md)
-- [IEC61850 集成](../Protocols/Iec61850Integration.md)
-- [MQTT 消息协议](../Protocols/MqttProtocol.md)
+- [[Modules/ast-intellisubdata/数据上报流程]] — 点位数据上报流程
+- [[Modules/ast-intellisub/设备告警流程]] — 告警处理流程
+- [[Modules/isapi/IEC61850数据上报服务]] — IEC61850 集成
+- [[Modules/ast-intellisub/Gateway/MqttService]] — MQTT 通信服务
 
 ---
 
-**最后更新**: 2026-06-03
+**最后更新**: 2026-06-12
 **版本**: v1.0.0

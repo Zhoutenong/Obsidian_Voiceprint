@@ -9,7 +9,7 @@
 ```
 
 ## 认证
-所有接口都需要 JWT Token 认证：
+所有接口（除音频上传外）需要 JWT Token 认证：
 ```
 Authorization: Bearer {token}
 ```
@@ -24,27 +24,18 @@ Authorization: Bearer {token}
 
 **描述**: 获取声纹监控系统的总览统计数据
 
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "totalDays": 30,
-    "totalCaptureCount": 150
-  }
-}
-```
+**返回**: `VoiceprintDashboardOverviewDto`
 
 ### 获取每日巡视记录
 
 **接口**: `GET /dashboard/records`
 
 **请求参数**:
-```
-date: 日期（默认为当天）
-```
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `date` | DateTime | 否 | 日期（默认为当天） |
 
-**响应**: 返回指定日期的巡视记录列表
+**返回**: `IReadOnlyList<VoiceprintDashboardRecordDto>`
 
 ### 获取巡视记录详情
 
@@ -52,11 +43,15 @@ date: 日期（默认为当天）
 
 **描述**: 获取指定批次ID的巡视记录详情
 
+**返回**: `IReadOnlyList<VoiceprintRecordDetailDto>`
+
 ### 获取系统状态
 
 **接口**: `GET /dashboard/system-status`
 
 **描述**: 获取声纹采集和识别系统的运行状态
+
+**返回**: `VoiceprintSystemStatusDto`
 
 ### 获取告警列表
 
@@ -64,11 +59,20 @@ date: 日期（默认为当天）
 
 **描述**: 获取仪表板显示的告警列表
 
+**返回**: `VoiceprintDashboardAlarmDto`
+
 ### 生成告警报告
 
 **接口**: `POST /dashboard/generate-alarm-report`
 
-**描述**: 生成告警统计报告
+**请求参数**:
+```json
+{
+  "alarmIds": ["guid1", "guid2"]
+}
+```
+
+**返回**: `IReadOnlyList<VoiceprintAudioReportGenerateResultDto>`
 
 ---
 
@@ -80,17 +84,27 @@ date: 日期（默认为当天）
 
 **描述**: 获取监控对象的层级结构树
 
+**返回**: `IReadOnlyList<VoiceprintAssetTreeNodeDto>`
+
 ### 获取资产详情
 
 **接口**: `GET /assets/{monitoredObjectId:guid}`
 
 **描述**: 获取指定监控对象的详细信息
 
+**返回**: `VoiceprintDeviceInfoDto`
+
 ### 获取设备趋势
 
 **接口**: `GET /assets/{monitoredObjectId:guid}/trend`
 
-**描述**: 获取设备声纹趋势数据
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `monitoredObjectId` | Guid | 是 | 监控对象ID（路由参数） |
+| `startTime` | DateTime | 否 | 起始时间 |
+
+**返回**: `IReadOnlyList<VoiceprintTrendItemDto>`
 
 ### 获取异常混合数据
 
@@ -98,17 +112,35 @@ date: 日期（默认为当天）
 
 **描述**: 获取设备的异常混合数据
 
+**返回**: `IReadOnlyList<VoiceprintAnomalyMixItemDto>`
+
 ### 获取设备日志
 
 **接口**: `GET /assets/{monitoredObjectId:guid}/logs`
 
-**描述**: 获取设备的操作和事件日志
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `monitoredObjectId` | Guid | 是 | 监控对象ID（路由参数） |
+| `startTime` | DateTime? | 否 | 起始时间 |
+| `endTime` | DateTime? | 否 | 结束时间 |
+| `page` | int | 否 | 页码（默认1） |
+| `pageSize` | int | 否 | 每页大小（默认50） |
+
+**返回**: `VoiceprintDeviceLogPagedResultDto`
 
 ### 下载已处理音频
 
 **接口**: `GET /assets/{monitoredObjectId:guid}/processed-audios/download`
 
-**描述**: 批量下载指定设备的已处理音频文件
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `monitoredObjectId` | Guid | 是 | 监控对象ID（路由参数） |
+| `startTime` | DateTime | 是 | 起始时间 |
+| `endTime` | DateTime | 是 | 结束时间 |
+
+**返回**: `FileStreamResult`（ZIP 压缩包）
 
 ---
 
@@ -118,36 +150,16 @@ date: 日期（默认为当天）
 
 **接口**: `GET /collector/logs`
 
-**描述**: 获取声纹采集器的运行日志
-
 **请求参数**:
-```
-deviceId: 设备ID（可选）
-startTime: 开始时间
-endTime: 结束时间
-pageIndex: 页码
-pageSize: 每页大小
-```
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `collectorDeviceId` | string | 否 | 采集器设备ID |
+| `groupId` | Guid? | 否 | 批次ID |
+| `status` | string | 否 | 状态筛选 |
+| `page` | int | 否 | 页码（默认1） |
+| `pageSize` | int | 否 | 每页大小（默认50） |
 
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "totalCount": 100,
-    "items": [
-      {
-        "id": "guid",
-        "deviceId": "guid",
-        "deviceName": "1#电机",
-        "collectedAt": "2026-06-03T10:00:00Z",
-        "status": "Success",
-        "errorMessage": null
-      }
-    ]
-  }
-}
-```
+**返回**: `VoiceprintCollectorLogPagedResultDto`
 
 ---
 
@@ -157,25 +169,60 @@ pageSize: 每页大小
 
 **接口**: `GET /alarms`
 
-**描述**: 获取声纹告警记录列表
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `startTime` | DateTime? | 否 | 起始时间 |
+| `endTime` | DateTime? | 否 | 结束时间 |
+| `monitoredObjectId` | Guid? | 否 | 监控对象ID |
+| `page` | int | 否 | 页码（默认1） |
+| `pageSize` | int | 否 | 每页大小（默认50） |
+
+**返回**: `VoiceprintAlarmPagedResultDto`
 
 ### 更新告警状态
 
 **接口**: `PUT /alarms/{alarmId:guid}`
 
-**描述**: 更新告警的处理状态
+**请求参数**: `ProcessVoiceprintAlarmInput`（请求体）
+
+**返回**: `Task`（void）
 
 ### 获取告警月度统计
 
 **接口**: `GET /alarms/monthly-stat`
 
-**描述**: 获取告警的月度统计数据
+**描述**: 获取近30天告警统计数据
+
+**返回**: `VoiceprintMonthlyStatDto`
 
 ### 获取告警设备选项
 
 **接口**: `GET /alarms/device-options`
 
 **描述**: 获取可用于告警筛选的设备选项列表
+
+**返回**: `IReadOnlyList<SimpleDeviceReferenceDto>`
+
+### 按时间范围删除告警
+
+**接口**: `DELETE /alarms/delete-by-time`
+
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `startTime` | DateTime | 是 | 起始时间 |
+| `endTime` | DateTime | 是 | 结束时间 |
+
+**返回**: 包含删除统计的匿名对象
+
+### 模拟告警
+
+**接口**: `POST /alarms/simulate`
+
+**描述**: 模拟生成声纹告警数据（测试工具）
+
+**返回**: 包含模拟结果的匿名对象
 
 ---
 
@@ -185,232 +232,52 @@ pageSize: 每页大小
 
 **接口**: `GET /standard-audios`
 
-**请求参数**:
-```json
-{
-  "keyword": "电机",
-  "pageIndex": 1,
-  "pageSize": 20
-}
-```
+**描述**: 按异常类型分组返回标准音频列表，无分页
 
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "items": [
-      {
-        "id": "guid",
-        "name": "电机正常声音",
-        "deviceType": "Motor",
-        "audioPath": "/path/to/audio.wav",
-        "features": "...",
-        "createdAt": "2026-06-01T10:00:00Z"
-      }
-    ],
-    "total": 100
-  }
-}
-```
+**返回**: `IReadOnlyList<VoiceprintStandardAudioGroupDto>`
 
 ### 创建标准音频
 
 **接口**: `POST /standard-audios`
 
-**请求参数**:
-```json
-{
-  "name": "电机正常声音",
-  "deviceType": "Motor",
-  "description": "电机正常运行时的声音特征"
-}
-```
+**Content-Type**: `multipart/form-data`
 
-**响应**: 返回创建的标准音频对象
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `anomalyType` | string | 是 | 异常类型 |
+| `file` | IFormFile | 是 | 音频文件 |
+| `audioName` | string | 是 | 音频名称 |
+
+**返回**: `Task`（void）
 
 ### 获取随机标准音频
 
 **接口**: `GET /standard-audios/random`
 
-**描述**: 获取一个随机的标准音频用于测试或对比
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `anomalyType` | string | 否 | 异常类型筛选 |
 
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "id": "guid",
-    "name": "电机正常声音",
-    "deviceType": "Motor",
-    "audioPath": "/path/to/audio.wav",
-    "features": "...",
-    "createdAt": "2026-06-01T10:00:00Z"
-  }
-}
-```
-
+**返回**: `VoiceprintStandardAudioDto`
 
 ---
 
 ## 测试音频管理
 
-
-### 导入测试音频并识别
+### 导入测试音频
 
 **接口**: `POST /test-audios/import`
 
 **Content-Type**: `multipart/form-data`
 
 **请求参数**:
-```
-file: 音频文件
-deviceId: 设备ID
-deviceName: 设备名称
-triggerRecognition: 是否自动识别（true/false）
-```
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `file` | IFormFile | 是 | 音频文件 |
 
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "audioId": "guid",
-    "status": "Imported",
-    "recognitionTaskId": "guid"
-  }
-}
-```
-
-
-
-
----
-
-## 音频记录管理
-
-### 获取音频记录列表
-
-**接口**: `GET /audios`
-
-**请求参数**:
-```json
-{
-  "deviceId": "guid",
-  "startTime": "2026-06-01",
-  "endTime": "2026-06-03",
-  "status": "Processed",
-  "pageIndex": 1,
-  "pageSize": 20
-}
-```
-
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "items": [
-      {
-        "id": "guid",
-        "deviceId": "guid",
-        "deviceName": "1#电机",
-        "originalPath": "/path/to/original.wav",
-        "processedPath": "/path/to/processed.wav",
-        "status": "Processed",
-        "capturedAt": "2026-06-01T10:00:00Z",
-        "processedAt": "2026-06-01T10:01:00Z"
-      }
-    ],
-    "total": 200
-  }
-}
-```
-
-### 获取音频详情
-
-**接口**: `GET /audios/{id}`
-
-**响应**: 返回音频记录详情，包含识别结果、特征数据等
-
-### 批量下载音频
-
-**接口**: `POST /audios/download`
-
-**请求参数**:
-```json
-{
-  "audioIds": ["guid1", "guid2", "guid3"]
-}
-```
-
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "downloadUrl": "/api/app/voiceprint/audios/download/token",
-    "filename": "audios-20260603.zip",
-    "size": 10240000
-  }
-}
-```
-
----
-
-## 报告管理
-
-### 从音频生成报告
-
-**接口**: `POST /reports/generate-from-audio`
-
-**请求参数**:
-```json
-{
-  "audioId": "guid",
-  "templateId": "guid",
-  "reportType": "Single"
-}
-```
-
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "reportId": "guid",
-    "downloadUrl": "/path/to/report.docx",
-    "filename": "声纹分析报告-20260603.docx"
-  }
-}
-```
-
-### 导出智能巡视报表
-
-**接口**: `POST /reports/export`
-
-**请求参数**:
-```json
-{
-  "startDate": "2026-06-01",
-  "endDate": "2026-06-03",
-  "deviceIds": ["guid1", "guid2"],
-  "includeCharts": true,
-  "format": "Docx"
-}
-```
-
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "taskId": "guid",
-    "status": "Processing"
-  }
-}
-```
-
+**返回**: `VoiceprintStandardAudioImportResultDto`
 
 ---
 
@@ -423,94 +290,80 @@ triggerRecognition: 是否自动识别（true/false）
 **请求参数**:
 ```json
 {
-  "mode": "Auto",
-  "config": {
-    "threshold": 0.8,
-    "sensitivity": "High"
-  }
+  "targetMode": 1
 }
 ```
 
-**响应**:
-```json
-{
-  "success": true,
-  "data": {
-    "currentMode": "Auto",
-    "switchedAt": "2026-06-03T10:00:00Z"
-  }
-}
-```
-
+**返回**: `VoiceprintAlgorithmSwitchResultDto`
 
 ---
 
-## 数据结构
+## 报告管理
 
-### 标准音频对象
+### 从音频生成报告
 
-```typescript
-interface StandardAudio {
-  id: string;
-  name: string;
-  deviceType: string;
-  audioPath: string;
-  features: string;  // 特征向量（Base64）
-  description?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-```
+**接口**: `POST /reports/generate-from-audio`
 
-### 测试音频对象
+**Content-Type**: `multipart/form-data`
 
-```typescript
-interface TestAudio {
-  id: string;
-  deviceId: string;
-  deviceName: string;
-  audioPath: string;
-  recognitionStatus: 'Pending' | 'Processing' | 'Completed' | 'Failed';
-  similarity?: number;
-  matchedStandardAudioId?: string;
-  matchedStandardAudioName?: string;
-  errorMessage?: string;
-  createdAt: Date;
-  processedAt?: Date;
-}
-```
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `audioFile` | IFormFile | 是 | 音频文件 |
+| `diagnosisType` | string | 否 | 诊断类型 |
+| `audioFileName` | string | 否 | 音频文件名 |
+| `resultFileName` | string | 否 | 结果文件名 |
 
-### 音频记录对象
+**返回**: `VoiceprintAudioReportGenerateResultDto`
 
-```typescript
-interface AudioRecord {
-  id: string;
-  deviceId: string;
-  deviceName: string;
-  originalPath: string;
-  processedPath: string;
-  status: 'Pending' | 'Processing' | 'Processed' | 'Failed' | 'Cleaned';
-  capturedAt: Date;
-  processedAt?: Date;
-  cleanedAt?: Date;
-  recognitionResult?: RecognitionResult;
-}
-```
+### 导出智能巡视报表
 
-### 报告对象
+**接口**: `POST /reports/export`
 
-```typescript
-interface Report {
-  id: string;
-  reportType: 'Single' | 'Patrol' | 'Batch';
-  format: 'Docx' | 'Pdf';
-  downloadUrl: string;
-  filename: string;
-  size: number;
-  generatedAt: Date;
-  expiresAt: Date;
-}
-```
+**请求参数**: `VoiceprintReportExportInput`（请求体）
+
+**返回**: `VoiceprintReportExportResultDto`
+
+---
+
+## 运维工具
+
+### 触发音频清理
+
+**接口**: `POST /cleanup/trigger`
+
+**描述**: 手动触发已处理音频的清理任务
+
+**返回**: `bool`
+
+### 修复缺失音频
+
+**接口**: `POST /processed-audios/repair-by-group`
+
+**请求参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `deviceId` | string | 是 | 设备ID |
+| `sourceDeviceId` | string | 是 | 源设备ID |
+| `yearMonth` | string | 是 | 年月（如 "2026-06"） |
+
+**返回**: 包含修复统计的匿名对象
+
+### 修复测试音频异常类型
+
+**接口**: `POST /device-audios/fix-test-audio-anomaly-type`
+
+**描述**: 批量修正测试音频的异常类型字段
+
+**返回**: 包含修复统计的匿名对象
+
+### 取消手动采集
+
+**接口**: `POST /capture/manual-cancel`
+
+**描述**: 终止正在进行的手动采集批次，恢复定时任务
+
+**返回**: `VoiceprintManualCancelResultDto`
 
 ---
 
@@ -540,48 +393,12 @@ interface Report {
 
 ---
 
-## 前端使用示例
+## 相关文档
 
-### 导入并识别音频
-
-```typescript
-const formData = new FormData();
-formData.append('file', audioFile);
-formData.append('deviceId', deviceId);
-formData.append('deviceName', deviceName);
-formData.append('triggerRecognition', 'true');
-
-const response = await fetch('/api/app/voiceprint/test-audios/import', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${token}`
-  },
-  body: formData
-});
-
-const result = await response.json();
-```
-
-### 获取识别结果
-
-```typescript
-const response = await fetch(
-  `/api/app/voiceprint/test-audios/${audioId}/recognition-result`,
-  {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  }
-);
-
-const result = await response.json();
-console.log(`相似度: ${result.data.similarity}%`);
-```
+- [[Hangfire/Voiceprint/VoiceprintCaptureJob]] - 声纹采集任务
+- [[Modules/ast-voiceprint/VoiceprintAudioAppService]] - 声纹音频应用服务
+- [[Modules/ast-voiceprint/VoiceprintPortalAppService]] - 声纹门户应用服务
 
 ---
 
-## 相关文档
-
-- [[VoiceprintCaptureJob]] - 声纹采集任务
-- [[VoiceAudioAppService]] - 声纹音频应用服务
-- [[VoiceprintPortalAppService]] - 声纹门户应用服务
+**最后更新**: 2026-06-12

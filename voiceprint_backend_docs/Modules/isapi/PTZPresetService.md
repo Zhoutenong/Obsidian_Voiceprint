@@ -665,8 +665,8 @@ private const int _stableCountThreshold = 3;   // 坐标稳定次数阈值
 ## 相关组件
 
 - [[HttpAuthenticatedClient]] - HTTP 认证客户端
-- [[NvrService]] - NVR 设备管理服务
-- [[DeviceService]] - 设备管理服务
+- [[Modules/ast-intellisub/Streaming/NvrService]] - NVR 设备管理服务
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理服务
 - [[PTZPreset]] - 预置点实体
 - [[PTZPresetList]] - 预置点列表实体
 - [[PtzStatus]] - PTZ 状态实体

@@ -285,7 +285,7 @@ public class MonitoredObjectTypeGetListInputDto : PagedAndSortedResultRequestDto
 - [[MonitoredObjectService]] - 监测对象服务
 - [[设备类型管理流程]] - 设备类型的配置和管理流程
 - [[设备分类体系]] - 设备分类和层级结构说明
-- [[设备管理服务]] - 设备管理相关文档
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理相关文档
 
 ---
 

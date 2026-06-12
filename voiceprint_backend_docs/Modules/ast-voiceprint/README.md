@@ -46,7 +46,7 @@ ast-voiceprint/
 
 **职责：** 处理音频上传和算法识别结果回写
 
-**详细文档：** [[VoiceprintAudioAppService.md|VoiceprintAudioAppService - 音频处理服务]]
+**详细文档：** [[VoiceprintAudioAppService|VoiceprintAudioAppService - 音频处理服务]]
 
 **核心功能：**
 - 音频上传与批次管理
@@ -54,13 +54,13 @@ ast-voiceprint/
 - 单音频报告生成
 - 算法模式切换
 
-**API 基础路径：** `/api/app/voiceprint-audio/`
+**API 基础路径：** `/api/app/voiceprint/`
 
 #### 2. VoiceprintPortalAppService
 
 **职责：** 提供前端门户功能的数据接口
 
-**详细文档：** [[VoiceprintPortalAppService.md|VoiceprintPortalAppService - 前端门户服务]]
+**详细文档：** [[VoiceprintPortalAppService|VoiceprintPortalAppService - 前端门户服务]]
 
 **核心功能：**
 - 首页总览与统计
@@ -106,7 +106,7 @@ ast-voiceprint/
 
 声纹模块使用统一的前缀 `vp_`，详细实体文档参见：
 
-**[[../../../voiceprint/声纹数据库实体介绍文档.md|声纹数据库实体介绍文档]]**
+**[[../../voiceprint/声纹数据库实体介绍文档|声纹数据库实体介绍文档]]**
 
 ### 核心实体总览
 
@@ -172,7 +172,7 @@ erDiagram
 
 ### 前端门户 API (`/api/app/voiceprint/`)
 
-**详细文档：** [[VoiceprintPortalAppService.md|VoiceprintPortalAppService - 前端门户服务]]
+**详细文档：** [[VoiceprintPortalAppService|VoiceprintPortalAppService - 前端门户服务]]
 
 | 端点 | 方法 | 功能 |
 |---|---|---|
@@ -198,9 +198,9 @@ erDiagram
 | `/reports/export` | POST | 导出综合报告 |
 | `/collector/logs` | GET | 采集器通信日志 |
 
-### 内部处理 API (`/api/app/voiceprint-audio/`)
+### 内部处理 API (`/api/app/voiceprint/`)
 
-**详细文档：** [[VoiceprintAudioAppService.md|VoiceprintAudioAppService - 音频处理服务]]
+**详细文档：** [[VoiceprintAudioAppService|VoiceprintAudioAppService - 音频处理服务]]
 
 | 端点 | 方法 | 功能 | 调用者 |
 |---|---|---|---|
@@ -280,12 +280,12 @@ sequenceDiagram
 
 ### 1. Python 声纹识别服务
 
-**详细方案：** [[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹识别服务方案]]
+**详细方案：** [[../../voiceprint/02-python-voiceprint-service方案|Python 声纹识别服务方案]]
 
 **接口约定：**
 
 ```http
-POST /api/app/voiceprint-audio/result
+POST /api/app/voiceprint/result
 Content-Type: application/json
 X-Api-Key: <配置的密钥>
 
@@ -306,12 +306,12 @@ X-Api-Key: <配置的密钥>
 
 ### 2. 树莓派边缘采集端
 
-**详细方案：** [[../../../voiceprint/03-raspberry-pi-agent方案.md|树莓派采集程序方案]]
+**详细方案：** [[../../voiceprint/03-raspberry-pi-agent方案|树莓派采集程序方案]]
 
 **接口约定：**
 
 ```http
-POST /api/app/voiceprint-audio/upload
+POST /api/app/voiceprint/upload
 Content-Type: multipart/form-data
 X-Api-Key: <配置的密钥>
 
@@ -392,41 +392,41 @@ file: <binary WAV data>
 
 ### 模块服务文档
 
-**[[VoiceprintAudioAppService.md|VoiceprintAudioAppService - 音频处理服务]]** - 音频上传、算法回写、报告生成、算法切换的详细接口文档
+**[[VoiceprintAudioAppService|VoiceprintAudioAppService - 音频处理服务]]** - 音频上传、算法回写、报告生成、算法切换的详细接口文档
 
-**[[VoiceprintPortalAppService.md|VoiceprintPortalAppService - 前端门户服务]]** - 门户统计、设备管理、告警处理、报告导出的详细接口文档
+**[[VoiceprintPortalAppService|VoiceprintPortalAppService - 前端门户服务]]** - 门户统计、设备管理、告警处理、报告导出的详细接口文档
 
-**[[../../Hangfire/Voiceprint/VoiceprintCaptureRuntimeStateService.md|VoiceprintCaptureRuntimeStateService - 运行时状态管理]]** - 手动采集批次状态管理和超时恢复机制
+**[[VoiceprintCaptureRuntimeStateService|VoiceprintCaptureRuntimeStateService - 运行时状态管理]]** - 手动采集批次状态管理和超时恢复机制
 
-**[[../../Hangfire/Voiceprint/VoiceprintCaptureJob.md|VoiceprintCaptureJob - 采集任务调度]]** - Hangfire 定时采集任务和 MQTT 命令下发
+**[[Hangfire/Voiceprint/VoiceprintCaptureJob|VoiceprintCaptureJob - 采集任务调度]]** - Hangfire 定时采集任务和 MQTT 命令下发
 
 ### 系统架构与设计
 
-**[[../../../voiceprint/00-系统架构与功能实现.md|系统架构与功能实现]]** - 完整的部署拓扑和组件协作说明
+**[[../../voiceprint/00-系统架构与功能实现|系统架构与功能实现]]** - 完整的部署拓扑和组件协作说明
 
-**[[../../../voiceprint/01-intelli-substation-voiceprint-backend改造方案.md|intelli-substation-voiceprint-backend 改造方案]]** - 代码改造点、配置项和接口定义
+**[[../../voiceprint/01-intelli-substation-voiceprint-backend改造方案|intelli-substation-voiceprint-backend 改造方案]]** - 代码改造点、配置项和接口定义
 
 ### 外部集成方案
 
-**[[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹识别服务方案]]** - 算法服务实现细节、目录结构和监控配置
+**[[../../voiceprint/02-python-voiceprint-service方案|Python 声纹识别服务方案]]** - 算法服务实现细节、目录结构和监控配置
 
-**[[../../../voiceprint/03-raspberry-pi-agent方案.md|树莓派采集程序方案]]** - 边缘采集端架构、MQTT 集成和重传策略
+**[[../../voiceprint/03-raspberry-pi-agent方案|树莓派采集程序方案]]** - 边缘采集端架构、MQTT 集成和重传策略
 
 ### 功能文档
 
-**[[../../../voiceprint/声纹数据库实体介绍文档.md|声纹数据库实体介绍文档]]** - 完整的数据模型、字段说明和典型查询
+**[[../../voiceprint/声纹数据库实体介绍文档|声纹数据库实体介绍文档]]** - 完整的数据模型、字段说明和典型查询
 
-**[[../../../voiceprint/分析报表需求文档.md|分析报表需求文档]]** - 报告生成需求和统计口径
+**[[../../voiceprint/分析报表需求文档|分析报表需求文档]]** - 报告生成需求和统计口径
 
-**[[../../../voiceprint/需求变更-算法切换与1分钟分段识别.md|需求变更-算法切换与1分钟分段识别]]** - 算法切换机制和分段识别功能
+**[[../../voiceprint/需求变更-算法切换与1分钟分段识别|需求变更-算法切换与1分钟分段识别]]** - 算法切换机制和分段识别功能
 
-**[[../../../voiceprint/多设备高频采集下音频时长不足原因分析.md|多设备高频采集下音频时长不足原因分析]]** - 高频场景下的性能分析
+**[[../../voiceprint/多设备高频采集下音频时长不足原因分析|多设备高频采集下音频时长不足原因分析]]** - 高频场景下的性能分析
 
 ### 运维文档
 
-**[[../../../voiceprint/已处理音频定期清理功能代码解释.md|已处理音频定期清理功能代码解释]]** - Hangfire 清理任务说明
+**[[../../voiceprint/已处理音频定期清理功能代码解释|已处理音频定期清理功能代码解释]]** - Hangfire 清理任务说明
 
-**[[../../../voiceprint/已处理音频下载接口优化方案.md|已处理音频下载接口优化方案]]** - 文件下载优化
+**[[../../voiceprint/已处理音频下载接口优化方案|已处理音频下载接口优化方案]]** - 文件下载优化
 
 ## 常见问题
 
@@ -449,7 +449,7 @@ SELECT * FROM vp_device_audio_record WHERE group_id = 'your-group-id'
 
 ### Q: 如何切换算法模式？
 
-调用 `POST /api/app/voiceprint-audio/switch-algorithm`，或在配置中修改默认设置。
+调用 `POST /api/app/voiceprint/algorithm/switch`，或在配置中修改默认设置。
 
 ### Q: 标准音频库如何使用？
 
@@ -467,5 +467,5 @@ SELECT * FROM vp_device_audio_record WHERE group_id = 'your-group-id'
 ---
 
 **文档版本：** v1.0.0  
-**最后更新：** 2025-06-18  
+**最后更新：** 2026-06-12  
 **维护者：** ast-voiceprint 模块团队

@@ -6,7 +6,7 @@
 
 **源码位置：** `module/ast-voiceprint/Ast.Voiceprint.Application/Services/VoiceprintAudioAppService.cs`
 
-**API 基础路径：** `/api/app/voiceprint-audio/`
+**API 基础路径：** `/api/app/voiceprint/`
 
 ---
 
@@ -14,7 +14,7 @@
 
 ### 1. 音频上传 (`UploadAsync`)
 
-**端点：** `POST /api/app/voiceprint-audio/upload`
+**端点：** `POST /api/app/voiceprint/upload`
 
 **职责：** 接收树莓派采集端上传的原始音频文件
 
@@ -63,8 +63,8 @@ public class VoiceprintAudioUploadResultDto
 ```
 
 **相关文档：**
-- [[../../Pipelines/Audio/音频采集与处理流程.md|音频采集与处理流程]]
-- [[../../Hangfire/Voiceprint/VoiceprintCaptureJob.md|VoiceprintCaptureJob - 采集任务调度]]
+- [[Pipelines/Audio/音频采集流程|音频采集与处理流程]]
+- [[Hangfire/Voiceprint/VoiceprintCaptureJob|VoiceprintCaptureJob - 采集任务调度]]
 
 ---
 
@@ -161,8 +161,8 @@ if (!hasTwoPreviousAbnormal)
 ```
 
 **相关文档：**
-- [[../../Pipelines/Audio/声纹识别与告警流程.md|声纹识别与告警流程]]
-- [[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹识别服务方案]]
+- [[Pipelines/Audio/音频处理管道|声纹识别与告警流程]]
+- [[../../voiceprint/02-python-voiceprint-service方案|Python 声纹识别服务方案]]
 
 ---
 
@@ -245,8 +245,8 @@ private static readonly Dictionary<string, string> _reportTemplateMap = new(Stri
 ```
 
 **相关文档：**
-- [[../../Pipelines/Audio/报告生成流程.md|报告生成流程]]
-- [[../../../voiceprint/分析报表需求文档.md|分析报表需求文档]]
+- [[Pipelines/Audio/音频处理管道|报告生成流程]]
+- [[../../voiceprint/分析报表需求文档|分析报表需求文档]]
 
 ---
 
@@ -338,8 +338,8 @@ Content-Type: application/json
 ```
 
 **相关文档：**
-- [[../../../voiceprint/需求变更-算法切换与1分钟分段识别.md|需求变更-算法切换与1分钟分段识别]]
-- [[../../Hangfire/Voiceprint/VoiceprintCaptureRuntimeStateService.md|运行时状态管理]]
+- [[../../voiceprint/需求变更-算法切换与1分钟分段识别|需求变更-算法切换与1分钟分段识别]]
+- [[Modules/ast-voiceprint/VoiceprintCaptureRuntimeStateService|运行时状态管理]]
 
 ---
 
@@ -367,7 +367,7 @@ public class VoiceprintManualCancelResultDto
 4. **自动切回算法** - 如果当前是增强模式，自动切回原始算法
 
 **相关文档：**
-- [[../../Hangfire/Voiceprint/VoiceprintCaptureRuntimeStateService.md|运行时状态管理]]
+- [[Modules/ast-voiceprint/VoiceprintCaptureRuntimeStateService|运行时状态管理]]
 
 ---
 
@@ -451,7 +451,7 @@ private void ValidateApiKey()
 
 ### Python 声纹识别服务
 
-**详细方案：** [[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹识别服务方案]]
+**详细方案：** [[../../voiceprint/02-python-voiceprint-service方案|Python 声纹识别服务方案]]
 
 **算法切换接口：**
 ```
@@ -535,7 +535,7 @@ VoiceprintDeviceAudioRecordEntity (音频记录)
     └── DeviceAudioRecordId → VoiceprintDeviceAudioRecordEntity
 ```
 
-**详细实体文档：** [[../../../voiceprint/声纹数据库实体介绍文档.md|声纹数据库实体介绍文档]]
+**详细实体文档：** [[../../voiceprint/声纹数据库实体介绍文档|声纹数据库实体介绍文档]]
 
 ---
 
@@ -632,20 +632,20 @@ VoiceprintDeviceAudioRecordEntity (音频记录)
 ## 相关文档
 
 ### 模块总览
-- [[README.md|ast-voiceprint 模块总览]]
+- [[README|ast-voiceprint 模块总览]]
 
 ### 相关服务
-- [[VoiceprintPortalAppService.md|VoiceprintPortalAppService - 前端门户服务]]
-- [[../../Hangfire/Voiceprint/VoiceprintCaptureRuntimeStateService.md|运行时状态管理]]
+- [[VoiceprintPortalAppService|VoiceprintPortalAppService - 前端门户服务]]
+- [[Modules/ast-voiceprint/VoiceprintCaptureRuntimeStateService|运行时状态管理]]
 
 ### 流程文档
-- [[../../Pipelines/Audio/音频采集与处理流程.md|音频采集与处理流程]]
-- [[../../Pipelines/Audio/声纹识别与告警流程.md|声纹识别与告警流程]]
-- [[../../Pipelines/Audio/报告生成流程.md|报告生成流程]]
+- [[Pipelines/Audio/音频采集流程|音频采集与处理流程]]
+- [[Pipelines/Audio/音频处理管道|声纹识别与告警流程]]
+- [[Pipelines/Audio/音频处理管道|报告生成流程]]
 
 ### 外部集成
-- [[../../../voiceprint/02-python-voiceprint-service方案.md|Python 声纹识别服务方案]]
-- [[../../../voiceprint/03-raspberry-pi-agent方案.md|树莓派采集程序方案]]
+- [[../../voiceprint/02-python-voiceprint-service方案|Python 声纹识别服务方案]]
+- [[../../voiceprint/03-raspberry-pi-agent方案|树莓派采集程序方案]]
 
 ---
 

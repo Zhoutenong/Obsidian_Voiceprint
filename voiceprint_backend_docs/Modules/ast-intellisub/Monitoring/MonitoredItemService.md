@@ -297,7 +297,7 @@ public class MonitoredObjectItemListDto
 - [[Modules/ast-intellisub/变电站监视范围概览]] - 监测项/监测点定义与种子数据说明
 - [[MonitoredObjectService]] - 监测对象服务
 - [[MonitoredPointService]] - 监测点位服务
-- [[设备管理服务]] - 设备管理相关文档
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理相关文档
 - [[监测项配置流程]] - 监测项配置和绑定流程
 
 ---

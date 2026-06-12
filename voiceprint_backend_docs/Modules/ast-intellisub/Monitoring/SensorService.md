@@ -319,7 +319,7 @@ foreach (var preset in presets)
 - [[DeviceService]] - 设备服务
 - [[StreamingGatewayService]] - 流媒体网关服务
 - [[MonitoredPointService]] - 监测点位服务
-- [[设备管理服务]] - 设备管理相关文档
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理相关文档
 
 ---
 

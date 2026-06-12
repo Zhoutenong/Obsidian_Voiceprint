@@ -467,12 +467,12 @@ NVR设备需要支持ISAPI接口：
 
 ## 相关文档
 
-- [[CameraService]] - 摄像机设备管理
-- [[DeviceService]] - 设备管理服务
-- [[GatewayService]] - 网关管理服务
-- [[PresetService]] - 预置点管理服务
-- [[MonitoredObjectService]] - 监测对象管理
-- [[StreamingGatewayService]] - 流媒体网关服务
+- [[Modules/ast-intellisub/Camera/CameraService]] - 摄像机设备管理
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理服务
+- [[Modules/ast-intellisub/Gateway/GatewayService]] - 网关管理服务
+- [[Modules/ast-intellisub/Camera/PresetService]] - 预置点管理服务
+- [[Modules/ast-intellisub/Monitoring/MonitoredObjectService]] - 监测对象管理
+- [[Modules/ast-intellisub/Gateway/StreamingGatewayService]] - 流媒体网关服务
 
 ---
 

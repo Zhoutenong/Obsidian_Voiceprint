@@ -251,7 +251,7 @@ public class MonitoredObjectStatisticsDto
 - [[Modules/ast-intellisub/变电站监视范围概览]] - 监视对象、物理量与数据流总览
 - [[MonitoredObjectTypeService]] - 监测对象类型服务
 - [[MonitoredPointService]] - 监测点位服务
-- [[设备管理服务]] - 设备管理相关文档
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理相关文档
 - [[设备告警流程]] - 告警处理流程
 
 ---

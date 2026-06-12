@@ -355,7 +355,7 @@ private void OnGatewayDisconnected(Guid gatewayId)
 - [[MqttService]] - MQTT 服务实现
 - [[MqttGatewayClient]] - MQTT 网关客户端
 - [[CollectorService]] - 采集器服务
-- [[设备管理服务]] - 设备管理相关文档
+- [[Modules/ast-intellisub/DeviceService]] - 设备管理相关文档
 
 ---
 

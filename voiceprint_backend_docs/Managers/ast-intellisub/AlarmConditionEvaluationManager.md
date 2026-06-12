@@ -176,12 +176,43 @@ public async Task<double?> GetFirstValueAsync(
 **功能**：
 获取指定点位的历史第一个值，支持缓存机制以提高性能。
 
+**参数验证步骤**：
+1. 验证 `PointId` 是否为有效 GUID 格式
+2. 验证 `DeviceId` 不为空
+3. 验证 `SensorKey` 不为空
+4. 验证 `Property` 不为空
+
 **缓存机制**：
 ```csharp
 // 优先使用缓存值
 if (firstValueCache?.Value.HasValue == true)
 {
     return firstValueCache.Value.Value;
+}
+
+// 参数验证
+if (!Guid.TryParse(context.PointVal.PointId, out var pointGuid))
+{
+    _logger.LogWarning("无效的点位ID格式：{PointId}", context.PointVal.PointId);
+    return null;
+}
+
+if (string.IsNullOrWhiteSpace(context.PointVal.DeviceId))
+{
+    _logger.LogWarning("DeviceId为空，无法查询FirstValue，点位ID：{PointId}", context.PointVal.PointId);
+    return null;
+}
+
+if (string.IsNullOrWhiteSpace(context.PointVal.SensorKey))
+{
+    _logger.LogWarning("SensorKey为空，无法查询FirstValue，点位ID：{PointId}", context.PointVal.PointId);
+    return null;
+}
+
+if (string.IsNullOrWhiteSpace(context.PointVal.Property))
+{
+    _logger.LogWarning("Property为空，无法查询FirstValue，点位ID：{PointId}", context.PointVal.PointId);
+    return null;
 }
 
 // 查询数据库
@@ -428,5 +459,5 @@ var condition = "($value > 80 && $firstValue < 50) || ($value < 20 && $firstValu
 
 ---
 
-> **最后更新**：2026-06-04  
+> **最后更新**：2026-06-12
 > **源码位置**：`module/ast-intellisub/Ast.IntelliSub.Application/Managers/AlarmConditionEvaluationManager.cs`

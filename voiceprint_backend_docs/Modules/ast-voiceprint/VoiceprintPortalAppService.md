@@ -1130,17 +1130,17 @@ var randomAudio = audios[random.Next(audios.Count)];
 ## 相关文档
 
 ### 模块总览
-- [[README.md|ast-voiceprint 模块总览]]
+- [[README|ast-voiceprint 模块总览]]
 
 ### 相关服务
-- [[VoiceprintAudioAppService.md|VoiceprintAudioAppService - 音频处理服务]]
+- [[VoiceprintAudioAppService|VoiceprintAudioAppService - 音频处理服务]]
 
 ### 功能文档
-- [[../../../voiceprint/声纹数据库实体介绍文档.md|声纹数据库实体介绍文档]]
-- [[../../../voiceprint/分析报表需求文档.md|分析报表需求文档]]
+- [[../../voiceprint/声纹数据库实体介绍文档|声纹数据库实体介绍文档]]
+- [[../../voiceprint/分析报表需求文档|分析报表需求文档]]
 
 ### 运维文档
-- [[../../../voiceprint/已处理音频下载接口优化方案.md|已处理音频下载接口优化方案]]
+- [[../../voiceprint/已处理音频下载接口优化方案|已处理音频下载接口优化方案]]
 
 ---
 
